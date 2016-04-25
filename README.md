@@ -1,3 +1,9 @@
+# Boilerplate Less Gulp
+
+This boilerplate offers you 4hours of your lifetime to do something else instead of reinventing the wheel.
+
+Thanks to it, your css/html/js updates in your projects will refresh automatically your browser view.
+
 ## Installation
 
 To initialize the project, run:
@@ -6,7 +12,8 @@ To initialize the project, run:
 npm install
 ```
 
-Configure your local address to **one-lci.local** on www folder
+Configure your local address to **myproject.local** on www folder
+
 ## Run project
 
 To run the project, run:
@@ -17,7 +24,7 @@ gulp serve
 
 A local server will be created with browsersync
 
-If you want to check project like in production, run:
+If you want to prepare you project for production, run:
 
 ```
 gulp serve --production
@@ -25,10 +32,11 @@ gulp serve --production
 
 This will remove sourcemaps and will minify JS and CSS
 
-## Inclus
+The whole configuration is included in gulp-config.js
+
+## Included
 
 * Browsersync
-* Minification js/css en mode production
-* Sourcemaps sauf en mode production
-* Minification des vues
-* Tout se gère dans le gulp-config.js pour les chemins d'entrée/sortie des fichiers
+* Sourcemaps
+* Views minification
+* Production mode : js/css minification + sources maps removed
