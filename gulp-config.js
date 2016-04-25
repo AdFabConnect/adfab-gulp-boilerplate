@@ -1,5 +1,5 @@
 module.exports = {
-    vhost: 'one-lci.local',
+    vhost: 'myproject.local',
 
 	source: {
 	    cssFileList: [ './src/assets/less/**/*.less' ],
