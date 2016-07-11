@@ -46,7 +46,7 @@ gulp.task('watch', ['build'],  function() {
     gulp.watch(config.source.libFileList, ['lib']);
     gulp.watch(config.source.fontFileList, ['fonts']);
     gulp.watch(config.source.imageFileList, ['images']);
-    gulp.watch(config.source.cssFileList, ['styles']);
+    gulp.watch(config.source.cssWatchFileList, ['styles']);
     gulp.watch(config.source.viewFileList, ['views']);
 });
 

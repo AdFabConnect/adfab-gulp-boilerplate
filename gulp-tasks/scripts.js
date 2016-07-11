@@ -16,6 +16,7 @@ var browserSync = require('browser-sync');
 
 var isFirstBuild = true;
 module.exports = function(watch) {
+    var isServer = process.argv[2] === 'serve';
     // Error notifications
     var handleError = function(task) {
         return function(err) {
@@ -33,8 +34,9 @@ module.exports = function(watch) {
         cache: {},
         packageCache: {},
     }).transform(babelify);
-
-    bundler = watchify(bundler);
+    if(isServer) {
+        bundler = watchify(bundler);
+    }
 
     var bundle = function() {
         return bundler.bundle()
@@ -43,11 +45,11 @@ module.exports = function(watch) {
             .pipe(buffer())
             .pipe(gulpif(util.env.production, uglify()))
             .pipe(gulp.dest(config.destination.assetsFolder + config.destination.jsFolderName))
-            .pipe(browserSync.stream({once: true}))
+            .pipe(gulpif(isServer, browserSync.stream({once: true})))
             .pipe(notify('Successfully compiled JS'));
     };
-
-    bundler.on('update', bundle);
-
+    if(isServer) {
+        bundler.on('update', bundle);
+    }
     return bundle();
 }

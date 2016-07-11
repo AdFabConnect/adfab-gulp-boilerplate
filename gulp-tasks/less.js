@@ -12,25 +12,18 @@ var util = require('gulp-util');
 var browserSync = require('browser-sync');
 
 module.exports = function() {
-    return gulp.src(config.source.cssFileList)
-        .pipe(plumber(function() {
-           /* {errorHandler: notify.onError({
-                message: "<%= error.message %>",
-                title: "Less Error"
-            })*/
-            notify('Fail compiled Less');
-            this.emit('end');
-        }))
+    return gulp.src(config.source.cssCompileFileList)
+        .pipe(plumber({errorHandler: notify.onError({
+            message: "<%= error.message %>",
+            title: "Less Error"
+        })}))
         .pipe(gulpif(!util.env.production, sourcemaps.init()))
         .pipe(less())
-        .pipe(concat(config.destination.cssFileName))
+        // .pipe(concat(config.destination.cssFileName))
         .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
         .pipe(gulpif(util.env.production, minifyCss()))
         .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
         .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
         .pipe(browserSync.stream())
         .pipe(notify('Successfully compiled Less'))
-        .on('error', function() {
-            this.emit("error", new Error("Less compilation Error"));
-         });
 };
