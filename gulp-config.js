@@ -2,24 +2,29 @@ module.exports = {
     vhost: 'myproject.local',
 
 	source: {
-	    cssFileList: [ './src/assets/less/**/*.less' ],
+        cssWatchFileList: [ './src/assets/less/**/*.less' ],
+        cssCompileFileList: [ './src/assets/less/style.less', './src/assets/less/styleguide.less' ],
         libFileList: [ './src/assets/scripts/lib/*.js' ],
         jsEntryFile: [ './src/assets/scripts/app.js' ],
         imageFileList: [ './src/assets/images/**/*' ],
-        viewFileList: [ './src/assets/**/*.html' ],
-        fontFileList: [ './src/assets/fonts/**/*' ]
+        viewFileList: [ './src/assets/views/**/*.html' ],
+        fontFileList: [ './src/assets/fonts/**/*' ],
+        fontIconFileList: [ './src/assets/icons/*.svg'],
 	},
-	
+
 	destination: {
-	    assetsFolder: './dist/assets/', // General assets destination path. 
+	    assetsFolder: './www/', // General assets destination path. 
 	    cssFolderName: 'css', // Name of the folder where put css file in asset folder.
-	    cssFileName: 'app.css',
+	    cssFileName: 'style.css',
         libFolderName: 'scripts',
         libFileName: 'lib.js',
         jsFolderName: 'scripts',
         jsFileName: 'app.js',
         imagesFolderName: 'images',
-	    viewsFolderName: '../',
+	    viewsFolderName: '',
         fontsFolderName: 'fonts',
+        fontIconFontName: 'fonticon',
+        fontIconFontFolderFile: './src/assets/fonts/',
+        fontIconLessFile: '../less/common/_fonticon.less'
 	}
 };
