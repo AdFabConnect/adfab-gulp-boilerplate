@@ -1,5 +1,5 @@
 module.exports = {
-    vhost: 'myproject.local',
+    vhost: 'gulp-boilerplate.local',
 
 	source: {
         cssWatchFileList: [ './src/assets/less/**/*.less' ],

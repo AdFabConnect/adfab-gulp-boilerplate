@@ -14,6 +14,21 @@ npm install
 
 Configure your local address to **myproject.local** on www folder
 
+Sets your vhost to the compilation path:
+
+```
+<VirtualHost *:80>
+DocumentRoot D:\programmation\wamp\www\myproject\www
+ServerName **myproject.local**
+</VirtualHost>
+```
+
+Updates your vhost:
+
+```
+127.0.0.1    **myproject.local**
+```
+
 ## Run project
 
 To run the project, run:
@@ -26,6 +41,8 @@ A local server will be created with browsersync
 
 If you want to prepare you project for production, run:
 
+## Options
+
 ```
 gulp serve --production
 ```
@@ -37,6 +54,11 @@ The whole configuration is included in gulp-config.js
 ## Included
 
 * Browsersync
-* Sourcemaps
+* CSS / JS Sourcemaps
 * Views minification
+* JS compilation
+* BABEL transpiler
+* SASS or LESS compilation
+* Notifications on success and error
+* Fonticon generation
 * Production mode : js/css minification + sources maps removed

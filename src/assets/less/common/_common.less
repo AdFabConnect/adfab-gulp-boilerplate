@@ -1,11 +1,35 @@
+html {
+  box-sizing: border-box; // applies a natural box layout model to all elements, but allowing components to change
+  font-size: 62.5%; // For rem
+}
+
 * {
   margin: 0;
   padding: 0;
   &, &::before, &::after {
-    box-sizing: boreder-box;
+    box-sizing: inherit;
   }
 }
 
 a {
-  color: inherit;
+  color: inherit; // Avoid blue/purple default links color
+}
+
+img {
+  display: inline-block; // To avoid margin bug under images
+}
+
+body {
+  background: @black;
+  &::after {
+    content: '';
+    position: fixed;
+    z-index: 2; // Over content
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid @adfabYellow;
+    pointer-events: none;
+  }
 }
