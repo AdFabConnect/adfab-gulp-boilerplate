@@ -18,18 +18,3 @@ a {
 img {
   display: inline-block; // To avoid margin bug under images
 }
-
-body {
-  background: @black;
-  &::after {
-    content: '';
-    position: fixed;
-    z-index: 2; // Over content
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    border: 2px solid @adfabYellow;
-    pointer-events: none;
-  }
-}

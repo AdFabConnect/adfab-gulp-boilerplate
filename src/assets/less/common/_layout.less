@@ -1,0 +1,37 @@
+// Site layout: main content full page for mobile/tablet
+
+body {
+  background: @black;
+  color: @white;
+  font: 1.4rem @fontDin;
+  &::after {
+    content: '';
+    position: fixed;
+    z-index: 2; // Over content
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid @adfabYellow;
+    pointer-events: none;
+  }
+}
+
+main {
+  margin-top: @headerHeight;
+}
+
+.content-block {
+  padding: 20px 40px;
+  p {
+    margin: 10px 0;
+  }
+}
+
+.content-block-yellow {
+  background-color: @adfabYellow;
+  color: @black;
+  .title-component {
+    color: @black;
+  }
+}
