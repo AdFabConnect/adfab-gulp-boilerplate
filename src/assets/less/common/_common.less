@@ -1,6 +1,9 @@
+// Common elements, css reset
+
 html {
   box-sizing: border-box; // applies a natural box layout model to all elements, but allowing components to change
   font-size: 62.5%; // For rem
+  height: 100%;
 }
 
 * {
@@ -9,6 +12,10 @@ html {
   &, &::before, &::after {
     box-sizing: inherit;
   }
+}
+
+img, video {
+  max-width: 100%;
 }
 
 a {
