@@ -3,7 +3,7 @@ module.exports = {
 
 	source: {
         cssWatchFileList: [ './src/assets/less/**/*.less' ],
-        cssCompileFileList: [ './src/assets/less/style.less', './src/assets/less/styleguide.less' ],
+        cssCompileFileList: [ './src/assets/less/style.less' ],
         libFileList: [ './src/assets/scripts/lib/*.js' ],
         jsEntryFile: [ './src/assets/scripts/app.js' ],
         imageFileList: [ './src/assets/images/**/*' ],
