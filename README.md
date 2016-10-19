@@ -1,4 +1,4 @@
-# Boilerplate Less Gulp
+# Gulp Boilerplate
 
 This boilerplate offers you 4hours of your lifetime to do something else instead of reinventing the wheel.
 

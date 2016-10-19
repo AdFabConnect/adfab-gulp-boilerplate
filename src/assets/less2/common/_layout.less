@@ -1,0 +1,48 @@
+// Site layout: main content full page for mobile/tablet
+
+body {
+  position: relative;
+  background: @black;
+  color: @textColor;
+  font: 2rem/1.6 @fontDin;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 2; // Over content
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid @adfabYellow;
+    pointer-events: none;
+  }
+}
+
+main {
+  margin-top: @headerHeight;
+}
+
+.content-block,
+.content-block-yellow,
+.content-block-grey {
+  padding: 20px 40px;
+  p {
+    margin: 10px 0;
+  }
+}
+
+.content-block-yellow {
+  background-color: @adfabYellow;
+  color: @black;
+  .title {
+    color: @black;
+  }
+}
+
+.content-block-grey {
+  background-color: @greyLight;
+  color: @black;
+  .title {
+    color: @black;
+  }
+}

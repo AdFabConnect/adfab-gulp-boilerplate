@@ -5,7 +5,8 @@ var del         = require('del');
 var browserSync  = require('browser-sync');
 
 gulp.task('scripts', require('./gulp-tasks/scripts'));
-gulp.task('styles', require('./gulp-tasks/less'));
+gulp.task('less', require('./gulp-tasks/less'));
+gulp.task('lesslint', require('./gulp-tasks/lesslint'));
 gulp.task('images', require('./gulp-tasks/images'));
 gulp.task('fonts', require('./gulp-tasks/fonts'));
 gulp.task('lib', require('./gulp-tasks/lib'));
@@ -29,7 +30,7 @@ gulp.task('clean', function(cb) {
  * Build app from sources
  */
 gulp.task('build', ['clean'], function() {
-    return runSequence(['scripts', 'lib', 'fonts', 'images', 'fonticon', 'styles', 'views']);
+    return runSequence(['scripts', 'lib', 'fonts', 'images', 'fonticon', 'lesslint', 'less', 'views']);
 });
 
 //BrowserSync
@@ -48,7 +49,7 @@ gulp.task('watch', ['build'],  function() {
     gulp.watch(config.source.fontFileList, ['fonts']);
     gulp.watch(config.source.imageFileList, ['images']);
     gulp.watch(config.source.fontIcon, ['fonticon']);
-    gulp.watch(config.source.cssWatchFileList, ['styles']);
+    gulp.watch(config.source.cssWatchFileList, ['less', 'lesslint']);
     gulp.watch(config.source.viewFileList, ['views']);
 });
 

@@ -10,6 +10,7 @@ var cleanCss = require('gulp-clean-css');
 var gulpif = require('gulp-if');
 var util = require('gulp-util');
 var browserSync = require('browser-sync');
+var lesshint = require('gulp-lesshint');
 
 module.exports = function() {
     return gulp.src(config.source.cssCompileFileList)

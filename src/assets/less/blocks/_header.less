@@ -1,30 +1,32 @@
 #header {
-  position: fixed;
-  z-index: 5; // Over content and body::after
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: @headerHeight;
-  background: @white;
-  padding: 20px;
-  .logo {
-    display: block;
-    margin: 20px;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 2; // Over content
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 0;
-    border: 2px solid @adfabYellow;
-    border-bottom: none;
-    pointer-events: none;
-  }
+    position: fixed;
+    z-index: 5; // Over content and body::after
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: @headerHeight;
+    background: @white;
+    padding: 20px;
+
+    .logo {
+        display: block;
+        margin: 20px;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 2; // Over content
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 0;
+        border: 2px solid @adfabYellow;
+        border-bottom: none;
+        pointer-events: none;
+    }
 }
 
 #header-content {
-  height: 100%;
+    height: 100%;
 }

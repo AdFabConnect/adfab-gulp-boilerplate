@@ -1,0 +1,109 @@
+{
+    "fileExtensions": [".less"],
+    "excludedFiles": [],
+    "attributeQuotes": {
+        "enabled": false
+    },
+    "borderZero": {
+        "enabled": false
+    },
+    "comment": {
+        "allowed": "^!",
+        "enabled": true
+    },
+    "duplicateProperty": {
+        "enabled": true,
+        "exclude": []
+    },
+    "emptyRule": {
+        "enabled": true
+    },
+    "finalNewline": {
+        "enabled": false
+    },
+    "hexLength": {
+        "enabled": false
+    },
+    "hexNotation": {
+        "enabled": true,
+        "style": "lowercase"
+    },
+    "hexValidation": {
+        "enabled": true
+    },
+    "idSelector": {
+        "enabled": false
+    },
+    "importantRule": {
+        "enabled": true
+    },
+    "maxCharPerLine": {
+        "enabled": false
+    },
+    "propertyOrdering": {
+        "enabled": false
+    },
+    "qualifyingElement": {
+        "enabled": true
+    },
+    "selectorNaming": {
+        "enabled": false
+    },
+    "singleLinePerProperty": {
+        "enabled": true
+    },
+    "singleLinePerSelector": {
+        "enabled": true
+    },
+    "spaceAfterPropertyColon": {
+        "enabled": true,
+        "style": "one_space"
+    },
+    "spaceAfterPropertyName": {
+        "enabled": true,
+        "style": "no_space"
+    },
+    "spaceAfterPropertyValue": {
+        "enabled": true,
+        "style": "no_space"
+    },
+    "spaceAroundComma": {
+        "enabled": true,
+        "style": "after"
+    },
+    "spaceAroundOperator": {
+        "enabled": true,
+        "style": "both"
+    },
+    "spaceBeforeBrace": {
+        "enabled": true,
+        "style": "one_space"
+    },
+    "spaceBeforeComma": {
+        "enabled": true,
+        "style": "no_space"
+    },
+    "spaceBetweenParens": {
+        "enabled": true,
+        "style": "no_space"
+    },
+    "stringQuotes": {
+        "enabled": false
+    },
+    "trailingSemicolon": {
+        "enabled": true
+    },
+    "trailingWhitespace": {
+        "enabled": true
+    },
+    "urlFormat": {
+        "enabled": true,
+        "style": "relative"
+    },
+    "urlQuotes": {
+        "enabled": true
+    },
+    "zeroUnit": {
+        "enabled": false
+    }
+}
