@@ -1,6 +1,6 @@
 {
   "name": "adfab-gulp-boilerplate",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "author": "Adfab <dev@adfab.fr> (http://adfab.fr/)",
   "description": "Adfab's boilerplate. Helps you kick-start a front-end project within minutes.",
   "homepage": "https://github.com/AdFabConnect/adfab-gulp-boilerplate",
@@ -12,10 +12,11 @@
   "license": "ISC",
   "directories": {
     "gulp-tasks": "./gulp-tasks",
+    "npm-scripts": "./npm-scripts",
     "src": "./src"
   },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js"
+    "install": "node npm-scripts/configure.js"
   },
   "dependencies": {
     "babel-core": "^6.4.0",
@@ -44,6 +45,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "ncp": "^2.0.0",
+    "inquirer": "^1.2.2",
     "run-sequence": "^1.1.5",
     "slick-carousel": "^1.5.9",
     "vinyl-buffer": "^1.0.0",
