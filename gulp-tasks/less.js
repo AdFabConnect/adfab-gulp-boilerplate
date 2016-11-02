@@ -1,4 +1,4 @@
-var config        = require('../gulp-config');
+var config        = require('../../../gulp-config');
 var gulp          = require('gulp');
 var plumber       = require('gulp-plumber');
 var less          = require('gulp-less');
@@ -13,7 +13,7 @@ var browserSync = require('browser-sync');
 var lesshint = require('gulp-lesshint');
 
 module.exports = function() {
-    return gulp.src(config.source.cssCompileFileList)
+    return gulp.src(config.source.lessCompileFileList)
         .pipe(plumber({errorHandler: notify.onError({
             message: "<%= error.message %>",
             title: "Less Error"

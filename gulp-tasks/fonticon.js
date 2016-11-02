@@ -1,4 +1,4 @@
-var config        = require('../gulp-config');
+var config        = require('../../../gulp-config');
 var gulp          = require('gulp');
 var plumber       = require('gulp-plumber');
 var notify        = require('gulp-notify');
@@ -16,7 +16,7 @@ module.exports = function() {
         fontName: config.destination.fontIconFontName,
         path: 'less',
         targetPath: config.destination.fontIconLessFile,
-        fontPath: '../fonts/'
+        fontPath: '../../../fonts/'
       }))
       .pipe(iconfont({
         fontName: config.destination.fontIconFontName,

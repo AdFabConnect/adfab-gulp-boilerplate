@@ -2,8 +2,10 @@ module.exports = {
     vhost: 'gulp-boilerplate.local',
 
 	source: {
-        cssWatchFileList: [ './src/assets/less/**/*.less' ],
-        cssCompileFileList: [ './src/assets/less/style.less' ],
+        lessWatchFileList: [ './src/assets/less/**/*.less' ],
+        lessCompileFileList: [ './src/assets/less/style.less' ],
+        sassWatchFileList: [ './src/assets/sass/**/*.scss' ],
+        sassCompileFileList: [ './src/assets/sass/**/*.scss' ],
         libFileList: [ './src/assets/scripts/lib/*.js' ],
         jsEntryFile: [ './src/assets/scripts/app.js' ],
         imageFileList: [ './src/assets/images/**/*' ],
