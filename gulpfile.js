@@ -55,13 +55,13 @@ gulp.task('browser-sync', function() {
  * Watch task for development
  */
 gulp.task('watch', ['build'],  function() {
-//    gulp.watch(config.source.jsFileList, ['scripts']);
-//    gulp.watch(config.source.libFileList, ['lib']);
+//    gulp.watch(config.source.fontIcon, ['fonticon']);
 //    gulp.watch(config.source.fontFileList, ['fonts']);
 //    gulp.watch(config.source.imageFileList, ['images']);
-//    gulp.watch(config.source.fontIcon, ['fonticon']);
 //    gulp.watch(config.source.cssWatchFileList, ['less', 'lesshint']);
+//    gulp.watch(config.source.libFileList, ['lib']);
 //    gulp.watch(config.source.sassWatchFileList, ['sass']);
+//    gulp.watch(config.source.jsFileList, ['scripts']);
 //    gulp.watch(config.source.viewFileList, ['views']);
 });
 
