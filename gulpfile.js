@@ -18,12 +18,13 @@ var browserSync  = require('browser-sync');
  * Clean build directory
  */
 gulp.task('clean', function(cb) {
-    del([config.destination.assetsFolder + config.destination.fontFolderName,
-        config.destination.assetsFolder + config.destination.cssFolderName,
-        config.destination.assetsFolder + config.destination.libFolderName,
-        config.destination.assetsFolder + config.destination.jsFolderName,
-        config.destination.assetsFolder + config.destination.viewsFolderName,
-        config.destination.assetsFolder + config.destination.imagesFolderName
+    del([
+//        config.destination.assetsFolder + config.destination.cssFolderName,
+//        config.destination.assetsFolder + config.destination.fontFolderName,
+//        config.destination.assetsFolder + config.destination.imagesFolderName
+//        config.destination.assetsFolder + config.destination.jsFolderName,
+//        config.destination.assetsFolder + config.destination.libFolderName,
+//        config.destination.assetsFolder + config.destination.viewsFolderName,
     ], cb);
 });
 
