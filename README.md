@@ -31,11 +31,11 @@ Every task of the boilerplate is commented out by default. This means that to ad
  * de-comment the `sass` task in the `build` task,
  * de-comment the `gulp.watch(config.source.sassWatchFileList, ['sass']);` line in the `watch` task.
 
-…don't worry, that'll be automatized in version 2. ;)
+…don't worry, it will be automatized in version 2. ;)
 
 ### Configure the tasks
 
-Every tasks rely on the `gulp-config.js` file for their configuration. Just fill-in the values you need.
+Every task rely on the `gulp-config.js` file for their configuration. Just fill-in the values you need.
 
 ## Utilization
 
