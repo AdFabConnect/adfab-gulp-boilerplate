@@ -1,4 +1,4 @@
-var config  = require('../../../gulp-config');
+var config  = require('../gulp-config');
 var gulp    = require('gulp');
 var plumber = require('gulp-plumber');
 var notify  = require('gulp-notify');
@@ -14,7 +14,7 @@ module.exports = function() {
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(config.destination.assetsFolder + config.destination.viewsFolderName))
     .pipe(browserSync.stream())
-    .pipe(notify('Successfully compiled Views'))
+    .pipe(notify({ message: 'Successfully compiled Views', onLast: true}))
     .on('error', function() {
       this.emit("error", new Error("Views compilation Error"));
     });

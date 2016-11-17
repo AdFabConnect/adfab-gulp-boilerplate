@@ -9,7 +9,7 @@ module.exports = {
         libFileList: [ './src/assets/scripts/lib/*.js' ],
         jsEntryFile: [ './src/assets/scripts/app.js' ],
         imageFileList: [ './src/assets/images/**/*' ],
-        viewFileList: [ './src/assets/views/**/*.html' ],
+        viewFileList: [ './src/assets/views/**/*.html', './src/assets/views/**/*.json', './src/assets/views/**/*.php' ],
         fontFileList: [ './src/assets/fonts/**/*' ],
         fontIconFileList: [ './src/assets/icons/*.svg'],
 	},

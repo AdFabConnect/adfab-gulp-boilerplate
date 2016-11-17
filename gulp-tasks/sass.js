@@ -1,4 +1,4 @@
-const config       = require('../../../gulp-config');
+const config       = require('../gulp-config');
 const gulp         = require('gulp');
 const plumber      = require('gulp-plumber');
 const sass         = require('gulp-sass');
@@ -6,7 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const notify       = require('gulp-notify');
 const concat       = require('gulp-concat');
 const sourcemaps   = require('gulp-sourcemaps');
-const minifyCss    = require('gulp-minify-css');
+const cleanCss = require('gulp-clean-css');
 const gulpif       = require('gulp-if');
 const util         = require('gulp-util');
 const browserSync  = require('browser-sync');
@@ -25,7 +25,7 @@ module.exports = function() {
     .pipe(sass())
     .pipe(concat(config.destination.cssFileName))
     .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
-    .pipe(gulpif(util.env.production, minifyCss()))
+    .pipe(gulpif(util.env.production, cleanCss()))
     .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
     .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
     .pipe(browserSync.stream())

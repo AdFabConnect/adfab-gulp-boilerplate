@@ -1,4 +1,4 @@
-var config        = require('../../../gulp-config');
+var config        = require('../gulp-config');
 var gulp          = require('gulp');
 
 module.exports = function() {

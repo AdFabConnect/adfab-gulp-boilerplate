@@ -1,4 +1,4 @@
-var config        = require('../../../gulp-config');
+var config        = require('../gulp-config');
 var gulp          = require('gulp');
 
 // TODO : optimize images with gulp-imagemin and gulp-svgmin
