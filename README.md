@@ -24,14 +24,7 @@ Upon installation, two files will be copied to the root of your project: `gulpfi
 
 ### Enable the tasks you need
 
-Every task of the boilerplate is commented out by default. This means that to add, for example, SASS compilation to your project you got to:
-
- * de-comment the `gulp.task('sass', …` line,
- * de-comment the affected folders paths in the `clean` task (in our example, the `config.destination.assetsFolder + config.destination.cssFolderName` line),
- * de-comment the `sass` task in the `build` task,
- * de-comment the `gulp.watch(config.source.sassWatchFileList, ['sass']);` line in the `watch` task.
-
-…don't worry, it will be automatized in version 2. ;)
+Just check `gulpfile.js` out de-comment what you need and comment out what you don't.
 
 ### Configure the tasks
 
@@ -50,3 +43,22 @@ gulp serve
 It acts as a proxy to the domain you specified in `gulp-config.js` (property `vhost`). You can now access your project by specifying the `3000` port (if you usually access your project via http://project.localhost/, now it would be http://project.localhost:3000/).
 
 You can also test it in production mode by passing the `--production` option. That way, it will remove *sourcemaps* and minify JS and CSS.
+
+## Contribution
+
+You're free to contribute to the boilerplate and log the time you spent improving it using [its Jira project](https://support.adfab.fr/secure/RapidBoard.jspa?rapidView=562&projectKey=BOILERPLATE&view=detail) at only one condition: because the project is used via NPM (and because it's a good practice, after all) you got to use the tagging system.
+
+### Tagging
+
+The tagging system is quite simple:
+
+ 1. Increment the major version when finishing a sprint
+ 2. Increment the minor version when adding a feature
+ 3. Increment the patch version when fixing a bug or doing a small change
+
+You **must** use this system for **every commit** because projects have to rely on stable versions of the boilerplate, example:
+
+```bash
+git tag v0.9.2
+git push origin --tags
+```
