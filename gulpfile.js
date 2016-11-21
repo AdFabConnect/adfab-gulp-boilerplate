@@ -5,15 +5,15 @@ var del         = require('del');
 var browserSync = require('browser-sync');
 var watch       = require('gulp-watch');
 
-gulp.task('fonticon', require('./gulp-tasks/fonticon'));
-gulp.task('fonts', require('./gulp-tasks/fonts'));
-gulp.task('images', require('./gulp-tasks/images'));
-gulp.task('less', require('./gulp-tasks/less'));
-gulp.task('lesshint', require('./gulp-tasks/lesshint'));
-gulp.task('lib', require('./gulp-tasks/lib'));
-gulp.task('scripts', require('./gulp-tasks/scripts'));
-//gulp.task('sass', require('./gulp-tasks/sass'));
-gulp.task('views', require('./gulp-tasks/views'));
+gulp.task('fonticon', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonticon'));
+gulp.task('fonts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonts'));
+gulp.task('images', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/images'));
+gulp.task('less', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/less'));
+gulp.task('lesshint', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lesshint'));
+gulp.task('lib', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lib'));
+//gulp.task('sass', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/sass'));
+gulp.task('scripts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/scripts'));
+gulp.task('views', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/views'));
 
 /**
  * Clean build directory
