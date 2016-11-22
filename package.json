@@ -17,7 +17,7 @@
     "src": "./src"
   },
   "scripts": {
-    "postinstall": "if [ ! -e ../../gulpfile.js ]; then cp gulpfile.js ../../; fi && if [ ! -e ../../gulp-config.js ]; then cp gulp-config.js ../../; fi"
+    "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
     "babel-core": "^6.4.0",
