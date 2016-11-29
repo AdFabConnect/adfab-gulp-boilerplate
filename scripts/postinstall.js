@@ -10,10 +10,10 @@ function fsExistsSync(myDir) {
         return false;
     }
 }
-if (!fsExists(outputGulpFile)) {
+if (!fsExistsSync(outputGulpFile)) {
     fs.createReadStream('gulpfile.js').pipe(fs.createWriteStream(outputGulpFile));
 }
 
-if (!fsExists(outputGulpConfig)) {
+if (!fsExistsSync(outputGulpConfig)) {
     fs.createReadStream('gulp-config.js').pipe(fs.createWriteStream(outputGulpConfig));
 }
