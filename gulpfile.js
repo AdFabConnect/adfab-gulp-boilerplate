@@ -5,13 +5,17 @@ var del         = require('del');
 var browserSync = require('browser-sync');
 var watch       = require('gulp-watch');
 
+//Bootstrap Task (comment out if you don't have any)
+gulp.task('bootstrap-font', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-font'));
+gulp.task('bootstrap-js', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-js'));
+
 gulp.task('fonticon', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonticon'));
 gulp.task('fonts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonts'));
 gulp.task('images', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/images'));
-gulp.task('less', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/less'));
-gulp.task('lesshint', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lesshint'));
+//gulp.task('less', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/less'));
+//gulp.task('lesshint', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lesshint'));
 gulp.task('lib', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lib'));
-//gulp.task('sass', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/sass'));
+gulp.task('sass', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/sass'));
 gulp.task('scripts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/scripts'));
 gulp.task('views', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/views'));
 
@@ -34,6 +38,8 @@ gulp.task('clean', function(cb) {
  */
 gulp.task('build', ['clean'], function() {
     return runSequence([
+        'bootstrap-font',
+        'bootstrap-js',
         'fonticon',
         'fonts',
         'images',
