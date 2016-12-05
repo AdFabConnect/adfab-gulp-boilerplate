@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    outputGulpFile = '../../gulpfiles.js',
+    outputGulpFile = '../../gulpfile.js',
     outputGulpConfig = '../../gulp-config.js';
 
 function fsExistsSync(myDir) {
