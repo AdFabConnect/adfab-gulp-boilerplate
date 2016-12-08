@@ -2,6 +2,9 @@ module.exports = {
     vhost: 'gulp-boilerplate.local',
 
 	source: {
+        bootStrapSass: ['./node_modules/bootstrap-sass/'],
+        bootStrapJsEntryFile: ['./node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js' ],
+        
         lessWatchFileList: [ './src/assets/less/**/*.less' ],
         lessCompileFileList: [ './src/assets/less/style.less' ],
         sassWatchFileList: [ './src/assets/sass/**/*.scss' ],
@@ -13,6 +16,10 @@ module.exports = {
         fontFileList: [ './src/assets/fonts/**/*' ],
         fontIconFileList: [ './src/assets/icons/*.svg'],
 	},
+
+    sassConfigs: {
+        includePaths : ['./node_modules/bootstrap-sass/assets/stylesheets']
+    },
 
 	destination: {
 	    assetsFolder: './www/', // General assets destination path. 
