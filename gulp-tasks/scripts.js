@@ -52,4 +52,4 @@ module.exports = function(watch) {
         bundler.on('update', bundle);
     }
     return bundle();
-}
+};

@@ -1,0 +1,14 @@
+// Use https://www.fontsquirrel.com/tools/webfont-generator or https://www.web-font-generator.com/ to generate your webfonts
+
+@font-face {
+    font-family: Din;
+    src: url('type/filename.eot');
+    src: local('☺'), url('type/filename.woff') format('woff'), url('type/filename.otf') format('opentype');
+}
+
+@font-face {
+    font-family: Din;
+    font-style: italic; // Here is the italic version of the font with the same name. Do the same with bold, thin...
+    src: url('type/filename-italic.eot');
+    src: local('☺'), url('type/filename-italic.woff') format('woff'), url('type/filename-italic.otf') format('opentype');
+}

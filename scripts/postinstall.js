@@ -1,6 +1,22 @@
-var fs = require('fs'),
-    outputGulpFile = '../../gulpfile.js',
-    outputGulpConfig = '../../gulp-config.js';
+var fs = require('fs');
+var ncp = require('ncp').ncp;
+
+//Where "src" folder is and have to be place
+var copyyFileList =
+[
+    {
+        input: 'gulpfile.js',
+        output: '../../gulpfile.js'
+    },
+    {
+        input: 'gulp-config.js',
+        output: '../../gulp-config.js-dist'
+    }
+];
+
+// Where "src" folder is and have to be place
+var assetsInput = 'src';
+var assetsOutput = '../../src';
 
 function fsExistsSync(myDir) {
     try {
@@ -10,10 +26,20 @@ function fsExistsSync(myDir) {
         return false;
     }
 }
-if (!fsExistsSync(outputGulpFile)) {
-    fs.createReadStream('gulpfile.js').pipe(fs.createWriteStream(outputGulpFile));
+
+// Copy some unitary files
+for(file of copyyFileList) {
+    if (!fsExistsSync(outputGulpFile)) {
+        fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
+    } 
 }
 
-if (!fsExistsSync(outputGulpConfig)) {
-    fs.createReadStream('gulp-config.js').pipe(fs.createWriteStream(outputGulpConfig));
-}
+// Copy a folder recursively
+ncp.limit = 16;
+ncp(assetsInput, assetsOutput, {
+    filter: /^(?:(?!\.gitkeep).)*$/
+}, function (err) {
+    if (err) {
+        return console.error(err);
+    }
+});
