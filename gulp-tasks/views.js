@@ -12,7 +12,7 @@ module.exports = function() {
       message: "<%= error.message %>",
       title: "Views Error"
     })}))
-    .pipe(gulpif(config.minifyHTML, htmlmin({collapseWhitespace: true}))
+    .pipe(gulpif(config.minifyHTML, htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(config.destination.assetsFolder + config.destination.viewsFolderName))
     .pipe(browserSync.stream())
     .pipe(notify({ message: 'Successfully compiled Views', onLast: true}))
