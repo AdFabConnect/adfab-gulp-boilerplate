@@ -20,6 +20,8 @@ module.exports = {
     sassConfigs: {
         includePaths : ['./node_modules/bootstrap-sass/assets/stylesheets']
     },
+    
+    minifyHTML: true,
 
 	destination: {
 	    assetsFolder: './www/', // General assets destination path. 
