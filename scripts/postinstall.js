@@ -10,7 +10,11 @@ var copyyFileList =
     },
     {
         input: 'gulp-config.js',
-        output: '../../gulp-config.js-dist'
+        output: '../../gulp-config.js'
+    },
+    {
+        input: '.editorconfig',
+        output: '../../.editorconfig'
     }
 ];
 
@@ -29,7 +33,7 @@ function fsExistsSync(myDir) {
 
 // Copy some unitary files
 for(file of copyyFileList) {
-    if (!fsExistsSync(outputGulpFile)) {
+    if (!fsExistsSync(file)) {
         fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
     } 
 }
