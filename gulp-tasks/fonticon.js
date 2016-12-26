@@ -14,15 +14,15 @@ module.exports = function() {
       })}))
       .pipe(iconfontCss({
         fontName: config.destination.fontIconFontName,
-        path: 'less',
-        targetPath: config.destination.fontIconLessFile,
-        fontPath: '../../../fonts/'
+        path: config.destination.fontIconType,
+        targetPath: config.destination.fontIconFileName,
+        fontPath: config.destination.fontIconFontPath
       }))
       .pipe(iconfont({
         fontName: config.destination.fontIconFontName,
         formats: ['ttf', 'eot', 'woff', 'woff2']
       }))
-      .pipe(gulp.dest(config.destination.fontIconFontFolderFile))
+      .pipe(gulp.dest(config.destination.assetsFolder + config.destination.fontIconFolderName))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
       .on('error', function() {
         this.emit("error", new Error("SVG font icon compilation Error"));

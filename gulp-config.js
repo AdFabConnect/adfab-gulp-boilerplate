@@ -35,7 +35,9 @@ module.exports = {
 	    viewsFolderName: '',
         fontsFolderName: 'fonts',
         fontIconFontName: 'fonticon',
-        fontIconFontFolderFile: './src/assets/fonts/',
-        fontIconLessFile: '../less/common/_fonticon.less'
+        fontIconType: 'scss', // css, less or scss
+        fontIconFolderName: './src/assets/fonts/',
+        fontIconFontPath: 'fonts/',
+        fontIconFileName: '../less/common/_fonticon.less'
 	}
 };
