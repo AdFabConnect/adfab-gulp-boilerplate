@@ -1,16 +1,16 @@
 # Adfab Gulp Boilerplate
 
-The goal of this boilerplate is to free you time so you can do something more interesting than reinventing the wheel, it includes:
+The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel, it includes:
 
 * Automatic reloading of the browser on code modification (using [Browsersync](https://www.browsersync.io/))
 * CSS / JS Sourcemaps
 * HTML minification
 * JS compilation
-* BABEL transpiler (ES6 support FTW)
-* SASS or LESS compilation
+* [Babel](https://babeljs.io/) transpiler (ES6 support FTW)
+* [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) compilation
 * Notifications on success and error
 * Fonticon generation
-* Production mode : JS / CSS minification + sources maps removal
+* Production mode: JS / CSS minification + sources maps removal
 
 ## Installation
 
@@ -20,7 +20,7 @@ npm install git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git
 
 Upon installation, two files will be copied to the root of your project: `gulpfile.js` and `gulp-config.js`.
 
-## Configuration
+## Usage
 
 ### Enable the tasks you need
 
@@ -30,11 +30,9 @@ Just check `gulpfile.js` out de-comment what you need and comment out what you d
 
 Every task rely on the `gulp-config.js` file for their configuration. Just fill-in the values you need.
 
-## Utilization
+### Browser live reloads
 
-### Browsersync
-
-Start Browsersync by launching:
+Start [Browsersync](https://www.browsersync.io/):
 
 ```shell
 gulp serve
@@ -62,3 +60,13 @@ You **must** use this system for **every commit** because projects have to rely 
 git tag v0.9.2
 git push origin --tags
 ```
+
+## License
+
+Copyright 2016 ADFAB
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
