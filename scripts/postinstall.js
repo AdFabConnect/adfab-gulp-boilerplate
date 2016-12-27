@@ -33,7 +33,7 @@ function fsExistsSync(myDir) {
 
 // Copy some unitary files
 for(file of copyyFileList) {
-    if (!fsExistsSync(file)) {
+    if (!fsExistsSync(file.output)) {
         fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
     } 
 }
