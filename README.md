@@ -15,7 +15,7 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 ## Installation
 
 ```shell
-npm install git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git
+npm install git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git#v0.9.2
 ```
 
 Upon installation, two files will be copied to the root of your project: `gulpfile.js` and `gulp-config.js`.
@@ -57,7 +57,7 @@ The tagging system is quite simple:
 You **must** use this system for **every commit** because projects have to rely on stable versions of the boilerplate, example:
 
 ```bash
-git tag v0.9.2
+git tag v0.9.3
 git push origin --tags
 ```
 
