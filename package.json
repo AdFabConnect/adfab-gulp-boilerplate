@@ -1,6 +1,6 @@
 {
   "name": "adfab-gulp-boilerplate",
-  "version": "0.9.0",
+  "version": "0.9.4",
   "author": "Adfab <dev@adfab.fr> (http://adfab.fr/)",
   "description": "Adfab's boilerplate. Helps you kick-start a front-end project within minutes.",
   "homepage": "https://github.com/AdFabConnect/adfab-gulp-boilerplate",
@@ -8,10 +8,8 @@
     "type": "git",
     "url": "git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git"
   },
-  "bugs": "https://support.adfab.fr/secure/RapidBoard.jspa?rapidView=562&projectKey=BOILERPLATE&view=detail&selectedIssue=BOILERPLATE-5",
-  "license": "UNLICENSED",
-  "private": true,
-  "main": "app.js",
+  "bugs": "https://github.com/AdFabConnect/adfab-gulp-boilerplate/issues",
+  "license": "ISC",
   "directories": {
     "gulp-tasks": "./gulp-tasks",
     "src": "./src"
