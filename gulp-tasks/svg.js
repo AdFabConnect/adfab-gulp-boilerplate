@@ -5,7 +5,7 @@ const svgSprite     = require('gulp-svg-sprite');
 const notify        = require('gulp-notify');
 
 module.exports = function() {
-  return gulp.src(config.path.svg)
+  return gulp.src(config.source.svgFileList)
     .pipe(plumber({errorHandler: notify.onError({
       message: "<%= error.message %>",
       title: "SVG Error"
@@ -25,7 +25,7 @@ module.exports = function() {
 			}
 		}
 	}))
-  	.pipe(gulp.dest(config.destination.assetsFolder))
+    .pipe(gulp.dest(config.destination.svgSprite))
     .pipe(notify('Successfully compiled SVG'))
     .on('error', function() {
       this.emit("error", new Error("SVG compilation Error"));
