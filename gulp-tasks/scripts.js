@@ -43,7 +43,9 @@ module.exports = function(watch) {
             .on('error', handleError('JS'))
             .pipe(source(config.destination.jsFileName))
             .pipe(buffer())
-            .pipe(gulpif(util.env.production, uglify()))
+            .pipe(gulpif(util.env.production, uglify().on('error', function(err) {
+                util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err))
+            })))
             .pipe(gulp.dest(config.destination.assetsFolder + config.destination.jsFolderName))
             .pipe(gulpif(isServer, browserSync.stream({once: true})))
             .pipe(notify('Successfully compiled JS'));
