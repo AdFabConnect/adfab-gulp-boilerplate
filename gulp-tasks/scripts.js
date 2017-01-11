@@ -33,7 +33,7 @@ module.exports = function(watch) {
         debug: !util.env.production,
         cache: {},
         packageCache: {},
-    }).transform(babelify);
+    }).transform(babelify, {presets: ["es2015"]});
     if(isServer) {
         bundler = watchify(bundler);
     }
