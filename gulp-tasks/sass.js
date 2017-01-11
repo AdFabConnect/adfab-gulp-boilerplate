@@ -26,7 +26,7 @@ module.exports = function() {
     .pipe(concat(config.destination.cssFileName))
     .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
     .pipe(gulpif(util.env.production, cleanCss()))
-    .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
+    .pipe(gulpif( ! util.env.production, sourcemaps.write()))
     .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
     .pipe(browserSync.stream())
     .pipe(notify('Successfully compiled SASS'))
