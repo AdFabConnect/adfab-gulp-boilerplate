@@ -4,7 +4,8 @@ module.exports = {
 	source: {
         bootStrapSass: ['./node_modules/bootstrap-sass/'],
         bootStrapJsEntryFile: ['./node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js' ],
-        
+        postCSSWatchFileList: [ './src/assets/pcss/**/*.pcss' ],
+        postCSSCompileFileList: [ './src/assets/pcss/**/*.pcss' ],
         lessWatchFileList: [ './src/assets/less/**/*.less' ],
         lessCompileFileList: [ './src/assets/less/style.less' ],
         sassWatchFileList: [ './src/assets/sass/**/*.scss' ],
