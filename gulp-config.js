@@ -21,7 +21,16 @@ module.exports = {
     sassConfigs: {
         includePaths : ['./node_modules/bootstrap-sass/assets/stylesheets']
     },
-    
+
+    postCSSConfigs: {
+        bem: {
+            style: 'bem'
+        },
+        next: {
+            browsers: 'last 5 versions, ie >= 9'
+        }
+    },
+
     minifyHTML: true,
 
 	destination: {
