@@ -7,7 +7,7 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 * HTML minification
 * JS compilation
 * [Babel](https://babeljs.io/) transpiler (ES6 support FTW)
-* [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) compilation
+* [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) or [postCSS](http://postcss.org/) compilation
 * Notifications on success and error
 * Fonticon generation
 * Production mode: JS / CSS minification + sources maps removal
