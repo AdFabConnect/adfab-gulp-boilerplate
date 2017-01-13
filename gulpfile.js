@@ -82,10 +82,6 @@ gulp.task('watch', ['build'],  function() {
 //    watch(config.source.sassWatchFileList, function() {
 //        return runSequence(['sass']);
 //    })
-//    watch(config.source.jsFileList, function() {
-//        return runSequence(['scripts']);
-//    })
-    console.log(config.source.viewFileList);
     watch(config.source.viewFileList, function() {
         return runSequence(['views']);
     });
