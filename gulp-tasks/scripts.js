@@ -14,9 +14,8 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync');
 
-var isFirstBuild = true;
-module.exports = function(watch) {
-    var isServer = process.argv[2] === 'serve';
+module.exports = function() {
+    var isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
     var handleError = function(task) {
         return function(err) {
@@ -34,7 +33,7 @@ module.exports = function(watch) {
         cache: {},
         packageCache: {},
     }).transform('babelify', { presets: ['es2015'] })
-    if(isServer) {
+    if(isWatching) {
         bundler = watchify(bundler);
     }
 
@@ -47,11 +46,12 @@ module.exports = function(watch) {
                 util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err))
             })))
             .pipe(gulp.dest(config.destination.assetsFolder + config.destination.jsFolderName))
-            .pipe(gulpif(isServer, browserSync.stream({once: true})))
-            .pipe(notify('Successfully compiled JS'));
+            .pipe(gulpif(isWatching, browserSync.stream({once: true})))
+            .pipe(notify({message: 'Successfully compiled JS', onLast: true}));
     };
-    if(isServer) {
+    if(isWatching) {
         bundler.on('update', bundle);
     }
+    
     return bundle();
 };
