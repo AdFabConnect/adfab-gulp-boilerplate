@@ -1,7 +1,6 @@
 const config       = require('../../../gulp-config');
 const gulp         = require('gulp');
 const plumber      = require('gulp-plumber');
-const autoprefixer = require('gulp-autoprefixer');
 const notify       = require('gulp-notify');
 const concat       = require('gulp-concat');
 const sourcemaps   = require('gulp-sourcemaps');
@@ -18,9 +17,9 @@ const cssnext      = require('postcss-cssnext');
 
 var processors = [
     Import,
-    bem(config.css.bem),
+    bem(config.postCSSConfigs.bem),
     extend,
-    cssnext(config.css.next)
+    cssnext(config.postCSSConfigs.next)
 ];
 
 module.exports = function() {
@@ -34,13 +33,12 @@ module.exports = function() {
         .pipe(gulpif(!util.env.production, sourcemaps.init()))
         .pipe(postcss(processors))
         .pipe(concat(config.destination.cssFileName))
-        .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
         .pipe(gulpif(util.env.production, cleanCss()))
         .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
         .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
         .pipe(browserSync.stream())
-        .pipe(notify('Successfully compiled SASS'))
+        .pipe(notify('Successfully compiled postCSS'))
         .on('error', function() {
-            this.emit("error", new Error("SASS compilation Error"));
+            this.emit("error", new Error("postCSS compilation Error"));
         });
 };
