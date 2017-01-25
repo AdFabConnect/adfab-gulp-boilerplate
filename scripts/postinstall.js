@@ -38,12 +38,14 @@ for(file of copyyFileList) {
     } 
 }
 
-// Copy a folder recursively
-ncp.limit = 16;
-ncp(assetsInput, assetsOutput, {
-    filter: /^(?:(?!\.gitkeep).)*$/
-}, function (err) {
-    if (err) {
-        return console.error(err);
-    }
-});
+// Copy source folder in project if not exists yet
+if (!fsExistsSync(assetsOutput)) {
+    ncp.limit = 16;
+    ncp(assetsInput, assetsOutput, {
+        filter: /^(?:(?!\.gitkeep).)*$/
+    }, function (err) {
+        if (err) {
+            return console.error(err);
+        }
+    });
+}
