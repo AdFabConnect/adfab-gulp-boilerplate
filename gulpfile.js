@@ -4,7 +4,7 @@ var gulp        = require('gulp');
 var del         = require('del');
 var browserSync = require('browser-sync');
 var watch       = require('gulp-watch');
-
+ 
 //Bootstrap Task (comment out if you don't have any)
 gulp.task('bootstrap-font', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-font'));
 gulp.task('bootstrap-js', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-js'));
@@ -19,6 +19,21 @@ gulp.task('lib', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/lib')
 gulp.task('sass', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/sass'));
 gulp.task('scripts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/scripts'));
 gulp.task('views', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/views'));
+
+var taskList = []; // Stores task list in config.tasks
+var watchTaskList = []; // Stores task in config.tasks with 'watchFileList'
+// TODO: add an option to clean or not the folder when building/watching (clean: true or a path)
+
+// Checks all tasks in config file
+for(taskName in config.tasks) {
+    if (config.tasks.hasOwnProperty(taskName)) {
+        gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
+        taskList.push(taskName);
+        if(config.tasks[taskName].hasOwnProperty('watchFileList')) {
+            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watchFileList })
+        }
+    }
+}
 
 /**
  * Clean build directory
@@ -38,19 +53,20 @@ gulp.task('clean', function(cb) {
  * Build app from sources
  */
 gulp.task('build', ['clean'], function() {
-    return runSequence([
+    taskList = taskList.concat([
         'bootstrap-font',
         'bootstrap-js',
         'fonticon',
         'fonts',
         'images',
-        'less',
-        'lesshint',
+        //'less',
+        //'lesshint',
         'lib',
-//        'sass',
-        'scripts',
-        'views'
-    ]);
+        //'sass', // Already generated
+        //'scripts', // Already generated
+        'views' 
+     ]);
+    return runSequence(taskList);
 });
 
 //BrowserSync
@@ -64,24 +80,25 @@ gulp.task('browser-sync', function() {
  * Watch task for development
  */
 gulp.task('watch', ['build'],  function() {
-//    watch(config.source.fontIcon, function() {
-//        return runSequence(['fonticon']);
-//    })
-//    watch(config.source.fontFileList, function() {
-//        return runSequence(['fonts']);
-//    })
-//    watch(config.source.imageFileList, function() {
-//        return runSequence(['images']);
-//    })
-    watch(config.source.lessWatchFileList, function() {
-        return runSequence(['less']);
-    });
-//    watch(config.source.libFileList, function() {
-//        return runSequence(['lib']);
-//    })
-//    watch(config.source.sassWatchFileList, function() {
-//        return runSequence(['sass']);
-//    })
+    for(var index in watchTaskList) {
+        var watchTask = watchTaskList[index];
+        watch(watchTask.fileList, function() {
+            return runSequence([watchTask.task]);
+        });
+    }
+    
+    watch(config.source.fontIcon, function() {
+        return runSequence(['fonticon']);
+    })
+    watch(config.source.fontFileList, function() {
+        return runSequence(['fonts']);
+    })
+    watch(config.source.imageFileList, function() {
+        return runSequence(['images']);
+    })
+    watch(config.source.libFileList, function() {
+        return runSequence(['lib']);
+    })
     watch(config.source.viewFileList, function() {
         return runSequence(['views']);
     });

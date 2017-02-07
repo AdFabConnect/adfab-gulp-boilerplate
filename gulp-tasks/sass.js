@@ -11,10 +11,12 @@ const gulpif       = require('gulp-if');
 const util         = require('gulp-util');
 const browserSync  = require('browser-sync');
 
+var sassConfig = config.tasks.sass;
+
 // TODO : optimize css with gulp-cssmin and gulp-uncss
 // TODO : configure autoprefixer only for the targeted browsers
 module.exports = function() {
-  return gulp.src(config.source.sassCompileFileList)
+  return gulp.src(sassConfig.compileFileList)
     .pipe(plumber({
         errorHandler: notify.onError({
             message: "<%= error.message %>",
@@ -22,11 +24,11 @@ module.exports = function() {
         })
     }))
     .pipe(gulpif(!util.env.production, sourcemaps.init()))
-    .pipe(sass(config.sassConfigs))
+    .pipe(sass(sassConfig.config))
     .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
     .pipe(gulpif(util.env.production, cleanCss()))
     .pipe(gulpif( ! util.env.production, sourcemaps.write()))
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
+    .pipe(gulp.dest(sassConfig.destinationFolder))
     .pipe(browserSync.stream())
     .pipe(notify('Successfully compiled SASS'))
     .on('error', function() {

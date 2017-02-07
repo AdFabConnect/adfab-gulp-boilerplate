@@ -14,6 +14,8 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync');
 
+var scriptConfig = config.tasks.scripts;
+
 module.exports = function() {
     var isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
@@ -27,12 +29,12 @@ module.exports = function() {
             this.emit('end');
         };
     };
-
-    var bundler = browserify( config.source.jsEntryFile, {
+    // TODO: If no babel presets, don't use babel at all
+    var bundler = browserify( scriptConfig.entryFileList, {
         debug: !util.env.production,
         cache: {},
         packageCache: {},
-    }).transform('babelify', { presets: ['es2015'] })
+    }).transform('babelify', { presets: [scriptConfig.babelPresets] })
     if(isWatching) {
         bundler = watchify(bundler);
     }
@@ -40,12 +42,12 @@ module.exports = function() {
     var bundle = function() {
         return bundler.bundle()
             .on('error', handleError('JS'))
-            .pipe(source(config.destination.jsFileName))
+            .pipe(source(scriptConfig.destinationFileName))
             .pipe(buffer())
             .pipe(gulpif(util.env.production, uglify().on('error', function(err) {
                 util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err))
             })))
-            .pipe(gulp.dest(config.destination.assetsFolder + config.destination.jsFolderName))
+            .pipe(gulp.dest(scriptConfig.destinationFolder))
             .pipe(gulpif(isWatching, browserSync.stream({once: true})))
             .pipe(notify({message: 'Successfully compiled JS', onLast: true}));
     };
