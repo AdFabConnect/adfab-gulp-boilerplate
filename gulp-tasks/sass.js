@@ -23,7 +23,6 @@ module.exports = function() {
     }))
     .pipe(gulpif(!util.env.production, sourcemaps.init()))
     .pipe(sass(config.sassConfigs))
-    .pipe(concat(config.destination.cssFileName))
     .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
     .pipe(gulpif(util.env.production, cleanCss()))
     .pipe(gulpif( ! util.env.production, sourcemaps.write()))
