@@ -20,7 +20,7 @@ module.exports = function() {
       }))
       .pipe(iconfont({
         fontName: config.destination.fontIconFontName,
-        formats: ['ttf', 'eot', 'woff', 'woff2']
+        formats: ['ttf', 'eot', 'woff', 'woff2', 'svg']
       }))
       .pipe(gulp.dest(config.destination.assetsFolder + config.destination.fontIconFolderName))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
