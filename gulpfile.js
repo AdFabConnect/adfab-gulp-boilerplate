@@ -9,7 +9,6 @@ var watch       = require('gulp-watch');
 gulp.task('bootstrap-font', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-font'));
 gulp.task('bootstrap-js', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/bootstrap-js'));
 
-gulp.task('fonticon', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonticon'));
 gulp.task('fonts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/fonts'));
 gulp.task('images', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/images'));
 //gulp.task('less', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/less'));
@@ -20,11 +19,9 @@ gulp.task('sass', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/sass
 gulp.task('scripts', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/scripts'));
 gulp.task('views', require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/views'));
 
-var taskList = []; // Stores task list in config.tasks
-var watchTaskList = []; // Stores task in config.tasks with 'watchFileList'
-// TODO: add an option to clean or not the folder when building/watching (clean: true or a path)
+var taskList = [];
+var watchTaskList = [];
 
-// Checks all tasks in config file
 for(taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
         gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
@@ -56,7 +53,7 @@ gulp.task('build', ['clean'], function() {
     taskList = taskList.concat([
         'bootstrap-font',
         'bootstrap-js',
-        'fonticon',
+        //'fonticon', // Already generated
         'fonts',
         'images',
         //'less',
@@ -87,21 +84,21 @@ gulp.task('watch', ['build'],  function() {
         });
     }
     
-    watch(config.source.fontIcon, function() {
-        return runSequence(['fonticon']);
-    })
-    watch(config.source.fontFileList, function() {
-        return runSequence(['fonts']);
-    })
-    watch(config.source.imageFileList, function() {
-        return runSequence(['images']);
-    })
-    watch(config.source.libFileList, function() {
-        return runSequence(['lib']);
-    })
-    watch(config.source.viewFileList, function() {
-        return runSequence(['views']);
-    });
+//    watch(config.source.fontIcon, function() {
+//        return runSequence(['fonticon']);
+//    })
+//    watch(config.source.fontFileList, function() {
+//        return runSequence(['fonts']);
+//    })
+//    watch(config.source.imageFileList, function() {
+//        return runSequence(['images']);
+//    })
+//    watch(config.source.libFileList, function() {
+//        return runSequence(['lib']);
+//    })
+//    watch(config.source.viewFileList, function() {
+//        return runSequence(['views']);
+//    });
 });
 
 gulp.task('serve', ['build', 'watch', 'browser-sync']);

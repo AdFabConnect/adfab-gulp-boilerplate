@@ -17,6 +17,19 @@ module.exports = {
             destinationFolder: './public/scripts',
             destinationFileName: 'app.js',
             babelPresets: 'es2015'
+        },
+        
+        // https://www.npmjs.com/package/gulp-iconfont
+        // https://www.npmjs.com/package/gulp-iconfont-css
+        fonticon: {
+            entryFileList: [ './src/assets/icons/*.svg' ],
+            watchFileList: [ './src/assets/icons/*.svg' ],
+            fileType: 'scss', // css, less or scss
+            fileName: './../../../../src/assets/sass/common/_fonticon.scss', // The generated file, you can put it in your src/ folder
+            fontName: 'fonticon', // The name of the generated @fton-face
+            fontPath: 'fonts/', // The path where font is found related to your final css file in generated folder
+            destinationFolder: './public/fonts/',
+            format: ['ttf', 'eot', 'woff', 'woff2', 'svg']
         }
     },
 
@@ -31,7 +44,6 @@ module.exports = {
         imageFileList: [ './src/assets/images/**/*' ],
         viewFileList: [ './src/assets/views/**/*.html', './src/assets/views/**/*.json', './src/assets/views/**/*.php' ],
         fontFileList: [ './src/assets/fonts/**/*' ],
-        fontIconFileList: [ './src/assets/icons/*.svg'],
     },
 
     postCSSConfigs: {
@@ -53,11 +65,6 @@ module.exports = {
         libFileName: 'lib.js',
         imagesFolderName: 'images',
         viewsFolderName: '',
-        fontsFolderName: 'fonts',
-        fontIconFontName: 'fonticon',
-        fontIconType: 'scss', // css, less or scss
-        fontIconFolderName: './src/assets/fonts/',
-        fontIconFontPath: 'fonts/',
-        fontIconFileName: '../less/common/_fonticon.less'
+        fontsFolderName: 'fonts'
     }
 };

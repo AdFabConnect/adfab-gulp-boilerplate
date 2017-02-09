@@ -6,23 +6,25 @@ var notify        = require('gulp-notify');
 var iconfont = require('gulp-iconfont');
 var iconfontCss = require('gulp-iconfont-css');
 
+var fonticonConfig = config.tasks.fonticon;
+
 module.exports = function() {
-  return gulp.src(config.source.fontIconFileList)
+  return gulp.src(fonticonConfig.entryFileList)
       .pipe(plumber({errorHandler: notify.onError({
           message: "<%= error.message %>",
           title: "Views Error"
       })}))
       .pipe(iconfontCss({
-        fontName: config.destination.fontIconFontName,
-        path: config.destination.fontIconType,
-        targetPath: config.destination.fontIconFileName,
-        fontPath: config.destination.fontIconFontPath
+        fontName: fonticonConfig.fontName,
+        path: fonticonConfig.fileType,
+        targetPath: fonticonConfig.fileName,
+        fontPath: fonticonConfig.fontPath
       }))
       .pipe(iconfont({
-        fontName: config.destination.fontIconFontName,
-        formats: ['ttf', 'eot', 'woff', 'woff2']
+        fontName: fonticonConfig.fontName,
+        formats: fonticonConfig.format
       }))
-      .pipe(gulp.dest(config.destination.assetsFolder + config.destination.fontIconFolderName))
+      .pipe(gulp.dest(fonticonConfig.destinationFolder))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
       .on('error', function() {
         this.emit("error", new Error("SVG font icon compilation Error"));
