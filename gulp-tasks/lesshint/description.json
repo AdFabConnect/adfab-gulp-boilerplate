@@ -1,0 +1,6 @@
+{
+    "name": "lesshint",
+    "whatDoesItDo": "LESS Hinting",
+    "excludes": "sass",
+    "requires": "less"
+}

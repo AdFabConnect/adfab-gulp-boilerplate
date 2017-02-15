@@ -1,0 +1,16 @@
+{
+    "name": "javascript",
+    "whatDoesItDo": "Javascript transpiling and minification",
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are the source files?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should the compiled files go?"
+        }
+    ]
+}

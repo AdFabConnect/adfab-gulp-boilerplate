@@ -1,20 +1,13 @@
 'use strict';
 
 {
-    let fs = require('fs');
-
-    // Add a symbolink link in the root directory
-    // pointing to the gulpfile.js we provide
-
-    let gulpfile = 'gulpfile.js';
-
-    fs.symlink(gulpfile, '../../' + gulpfile);
+    const fs = require('fs');
 
     // Copy the .editorconfig file to the root directory if it doesn't
     // already exist so that it can be tuned afterward, if necessary
 
-    let
-        editorconfig = '.editorconfig',
+    const
+        editorconfig     = '.editorconfig',
         rootEditorconfig = '../../' + editorconfig
     ;
 
@@ -28,22 +21,42 @@
 
     // Copy a base file structure to kickstart a project event faster
 
-    let ncp = require('ncp').ncp;
+    const
+        sources     = 'src',
+        rootSources = '../../' + sources
+    ;
 
-    // To quote ncp's README:
-    // "The 'concurrency limit' is an integer that represents how many pending
-    // file system requests ncp has at a time."
+    try {
+        fs.accessSync(rootSources);
+    } catch (e) {
+        const ncp = require('ncp').ncp;
 
-    ncp.limit = 16;
+        // To quote ncp's README:
+        // "The 'concurrency limit' is an integer that represents how many
+        // pending file system requests ncp has at a time."
 
-    ncp(
-        'src',
-        '../../src',
-        {
-            // Do not copy .gitkeep files
-            filter: /^(?:(?!\.gitkeep).)*$/,
-            // Do not overwrite files
-            clobber: false
-        }
-    );
+        ncp.limit = 16;
+
+        ncp(
+            sources,
+            rootSources,
+            {
+                // Do not copy .gitkeep files
+                filter: /^(?:(?!\.gitkeep).)*$/,
+                // Do not overwrite files
+                clobber: false
+            },
+            () => {}
+        );
+    }
+
+    // Add a symbolink link in the root directory
+    // pointing to the gulpfile.js we provide
+
+    // I just discovered you can't create a symlink in a parent directory
+    process.chdir('../../');
+
+    const gulpfile = 'gulpfile.js';
+
+    fs.symlink('node_modules/adfab-gulp-boilerplate/' + gulpfile, gulpfile, () => {});
 }

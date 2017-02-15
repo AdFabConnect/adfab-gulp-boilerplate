@@ -1,0 +1,5 @@
+{
+    "name": "jshint",
+    "whatDoesItDo": "Javascript hinting",
+    "requires": "javascript"
+}

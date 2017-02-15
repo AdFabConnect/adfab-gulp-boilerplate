@@ -1,0 +1,17 @@
+{
+    "name": "copy",
+    "whatDoesItDo": "Copy files",
+    "isRepeatable": true,
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are to files to copy?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should they go?"
+        }
+    ]
+}

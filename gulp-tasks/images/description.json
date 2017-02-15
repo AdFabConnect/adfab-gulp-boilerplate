@@ -1,0 +1,17 @@
+{
+    "name": "images",
+    "whatDoesItDo": "Copy and minify images",
+    "isRepeatable": true,
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are the images?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should they go?"
+        }
+    ]
+}

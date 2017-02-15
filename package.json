@@ -1,6 +1,6 @@
 {
   "name": "adfab-gulp-boilerplate",
-  "version": "0.9.6",
+  "version": "0.10.0",
   "author": "Adfab <dev@adfab.fr> (http://adfab.fr/)",
   "description": "Adfab's boilerplate. Helps you kick-start a front-end project within minutes.",
   "homepage": "https://github.com/AdFabConnect/adfab-gulp-boilerplate",
@@ -16,7 +16,7 @@
     "src": "./src"
   },
   "scripts": {
-    "install": "node npm-scripts/configure.js"
+    "install": "node npm-scripts/configure.js && node npm-scripts/install-base-files.js"
   },
   "dependencies": {
     "babel-core": "^6.4.0",

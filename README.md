@@ -15,20 +15,22 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 ## Installation
 
 ```shell
-npm install git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git#v0.9.2
+npm i adfab-gulp-boilerplate
 ```
 
-Upon installation, two files will be copied to the root of your project: `gulpfile.js` and `gulp-config.js`.
+Just after installation, you will be asked a few questions to configure the boilerplate to suit your needs.
+
+After you answered every question three objects will be copied to the root of your project:
+
+* A `boilerplate-config.json` file containing every answer you made
+* A `.editorconfig` file that you can configure to better suit your rules
+* A `gulpfile.js` which is a symbolic link to the file the boilerplate provides
 
 ## Usage
 
-### Enable the tasks you need
-
-Just check `gulpfile.js` out de-comment what you need and comment out what you don't.
-
-### Configure the tasks
-
-Every task rely on the `gulp-config.js` file for their configuration. Just fill-in the values you need.
+```shell
+gulp watch
+```
 
 ### Browser live reloads
 
@@ -38,7 +40,7 @@ Start [Browsersync](https://www.browsersync.io/):
 gulp serve
 ```
 
-It acts as a proxy to the domain you specified in `gulp-config.js` (property `vhost`). You can now access your project by specifying the `3000` port (if you usually access your project via http://project.localhost/, now it would be http://project.localhost:3000/).
+It acts as a proxy to the domain you specified just after installation. You can now access your project by specifying the `3000` port (if you usually access your project via http://project.localhost/, now it would be http://project.localhost:3000/).
 
 You can also test it in production mode by passing the `--production` option. That way, it will remove *sourcemaps* and minify JS and CSS.
 

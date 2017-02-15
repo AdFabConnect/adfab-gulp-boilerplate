@@ -1,4 +1,4 @@
-var config        = require('../../../gulp-config');
+const config      = require('../../../boilerplate-config.json');
 var gulp          = require('gulp');
 var plumber       = require('gulp-plumber');
 var notify        = require('gulp-notify');

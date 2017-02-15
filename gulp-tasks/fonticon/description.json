@@ -1,0 +1,16 @@
+{
+    "name": "fonticon",
+    "whatDoesItDo": "Create a fonticon",
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are the source SVG files?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should the font go?"
+        }
+    ]
+}

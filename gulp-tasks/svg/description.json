@@ -1,0 +1,17 @@
+{
+    "name": "svg",
+    "whatDoesItDo": "SVG spriting",
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are the source files?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should the sprite go?"
+        }
+    ],
+    "excludes": "less"
+}

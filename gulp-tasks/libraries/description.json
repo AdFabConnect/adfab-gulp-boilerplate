@@ -1,0 +1,16 @@
+{
+    "name": "libraries",
+    "whatDoesItDo": "Copy and concatenate third-party files",
+    "questions": [
+        {
+            "type": "input",
+            "name": "source",
+            "message": "Where are the source files?"
+        },
+        {
+            "type": "input",
+            "name": "destination",
+            "message": "Where should the compiled file go?"
+        }
+    ]
+}

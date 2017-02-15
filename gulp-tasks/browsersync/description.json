@@ -1,0 +1,11 @@
+{
+    "name": "browsersync",
+    "whatDoesItDo": "Browser synchronization",
+    "questions": [
+        {
+            "type": "input",
+            "name": "domain",
+            "message": "What is the local domain under which the project is served?"
+        }
+    ]
+}
