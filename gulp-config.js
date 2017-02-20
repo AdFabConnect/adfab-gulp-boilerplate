@@ -16,6 +16,7 @@ module.exports = {
         viewFileList: [ './src/assets/views/**/*.html', './src/assets/views/**/*.json', './src/assets/views/**/*.php' ],
         fontFileList: [ './src/assets/fonts/**/*' ],
         fontIconFileList: [ './src/assets/icons/*.svg'],
+        svgSpriteFiles: './src/assets/svg/numbers/*.svg'
 	},
 
     sassConfigs: {
@@ -48,6 +49,7 @@ module.exports = {
         fontIconType: 'scss', // css, less or scss
         fontIconFolderName: './src/assets/fonts/',
         fontIconFontPath: 'fonts/',
-        fontIconFileName: '../less/common/_fonticon.less'
+        fontIconFileName: '../less/common/_fonticon.less',
+        svgSpriteFolder: './public/themes/engie/images'
 	}
 };
