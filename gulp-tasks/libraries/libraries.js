@@ -1,9 +1,15 @@
-var config        = require('../../../gulp-config');
-var gulp          = require('gulp');
-var concat = require('gulp-concat');
+const
+    concat = require('gulp-concat'),
+    util   = require('gulp-util'),
+    config = util.env.config,
+    gulp   = util.env.gulp
+;
+
 
 module.exports = function() {
-  return gulp.src(config.source.libFileList)
-  	.pipe(concat(config.destination.libFileName))
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.libFolderName));
+    return gulp
+        .src(config.libraries.source)
+        .pipe(concat(config.libraries.name))
+        .pipe(gulp.dest(config.libraries.destination))
+    ;
 };

@@ -1,24 +1,24 @@
-const config       = require('../../../boilerplate-config.json');
-var gulp = require('gulp');
-var plumber       = require('gulp-plumber');
-var notify        = require('gulp-notify');
-var sourcemaps = require('gulp-sourcemaps');
-var browserify = require('browserify');
-var babelify = require('babelify');
-var concat = require('gulp-concat');
-var gulpif = require('gulp-if');
-var util = require('gulp-util');
-var watchify = require('watchify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var browserSync = require('browser-sync');
+const
+    notify      = require('gulp-notify'),
+    browserify  = require('browserify'),
+    babelify    = require('babelify'),
+    gulpif      = require('gulp-if'),
+    watchify    = require('watchify'),
+    source      = require('vinyl-source-stream'),
+    buffer      = require('vinyl-buffer'),
+    uglify      = require('gulp-uglify'),
+    browserSync = require('browser-sync'),
+    util        = require('gulp-util'),
+    config      = util.env.config,
+    gulp        = util.env.gulp,
+    isServer    = (process.argv[2] === 'serve')
+;
 
-var isFirstBuild = true;
+let isFirstBuild = true;
+
 module.exports = function(watch) {
-    var isServer = process.argv[2] === 'serve';
     // Error notifications
-    var handleError = function(task) {
+    const handleError = function(task) {
         return function(err) {
             notify.onError({
                 message: task + ' failed, check the logs..'
@@ -29,29 +29,43 @@ module.exports = function(watch) {
         };
     };
 
-    var bundler = browserify( config.source.jsEntryFile, {
-        debug: !util.env.production,
-        cache: {},
-        packageCache: {},
-    }).transform('babelify', { presets: ['es2015'] })
-    if(isServer) {
+    let bundler = browserify(
+        config.javascript.source,
+        {
+            debug: ! util.env.production,
+            cache: {},
+            packageCache: {},
+        }
+    ).transform('babelify', { presets: [ 'es2015' ] })
+
+    if (isServer) {
         bundler = watchify(bundler);
     }
 
-    var bundle = function() {
-        return bundler.bundle()
+    const bundle = function() {
+        return bundler
+            .bundle()
             .on('error', handleError('JS'))
-            .pipe(source(config.destination.jsFileName))
+            .pipe(source(config.javascript.name))
             .pipe(buffer())
-            .pipe(gulpif(util.env.production, uglify().on('error', function(err) {
-                util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err))
-            })))
-            .pipe(gulp.dest(config.destination.assetsFolder + config.destination.jsFolderName))
-            .pipe(gulpif(isServer, browserSync.stream({once: true})))
-            .pipe(notify('Successfully compiled JS'));
+            .pipe(gulpif(
+                util.env.production,
+                uglify().on('error', function(err) {
+                    util.log(
+                        util.colors.bgRed('UglifyJS error:'),
+                        util.colors.red(err)
+                    )
+                })
+            ))
+            .pipe(gulp.dest(config.javascript.destination))
+            .pipe(gulpif(isServer, browserSync.stream({ once: true })))
+            .pipe(notify('Successfully compiled JS'))
+        ;
     };
-    if(isServer) {
+
+    if (isServer) {
         bundler.on('update', bundle);
     }
+
     return bundle();
 };

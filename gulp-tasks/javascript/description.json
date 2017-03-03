@@ -11,6 +11,11 @@
             "type": "input",
             "name": "destination",
             "message": "Where should the compiled files go?"
+        },
+        {
+            "type": "input",
+            "name": "name",
+            "message": "What should the name of the main file be?"
         }
     ]
 }

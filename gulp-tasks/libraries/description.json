@@ -9,6 +9,11 @@
         },
         {
             "type": "input",
+            "name": "name",
+            "message": "What should the compiled file name be?"
+        },
+        {
+            "type": "input",
             "name": "destination",
             "message": "Where should the compiled file go?"
         }

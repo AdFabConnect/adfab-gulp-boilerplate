@@ -1,11 +1,14 @@
-const config       = require('../../../boilerplate-config.json');
-var gulp          = require('gulp');
-var imagemin      = require('gulp-imagemin');
-
-// TODO : optimize images with gulp-imagemin and gulp-svgmin
+const
+    imagemin = require('gulp-imagemin'),
+    util     = require('gulp-util'),
+    config   = util.env.config,
+    gulp     = util.env.gulp
+;
 
 module.exports = function() {
-  return gulp.src(config.source.imageFileList)
-    .pipe(imagemin())
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.imagesFolderName));
+    return gulp
+        .src(config.images.source)
+        .pipe(imagemin())
+        .pipe(gulp.dest(config.images.destination))
+    ;
 };

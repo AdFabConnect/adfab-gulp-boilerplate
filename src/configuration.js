@@ -1,41 +1,60 @@
 'use strict';
 
+/**
+ * Configuration class
+ */
 class Configuration {
+    /**
+     * Configuration constructor
+     *
+     * @return {undefined}
+     */
     constructor () {
         this.inquirer      = require('inquirer');
         this.fs            = require('fs');
         this.rx            = require('rx');
-        this.everyTasks    = [];
+        this.everyTasks    = null;
         this.filteredTasks = [];
         this.included      = [];
         this.excluded      = [];
         this.tasksNumber   = 0;
     }
 
+    /**
+     * Get configuration file name
+     *
+     * @return {string} The configuration file name
+     */
     get FILE () {
         return 'boilerplate-configuration.json';
     }
 
+    /**
+     * Get every tasks
+     *
+     * @return {array} Every tasks
+     */
     get tasks () {
-        if (this.everyTasks.length !== 0) {
+        // Return the everyTasks property if it has been set
+        if (this.everyTasks.length !== null) {
             return this.everyTasks;
         }
 
         const
-            GULP_TASKS_PATH = 'gulp-tasks/',
-            fs              = this.fs,
-            taskFiles       = fs.readdirSync(GULP_TASKS_PATH)
+            GULP_TASKS_PATH  = 'gulp-tasks/',
+            fs               = this.fs,
+            tasksDirectories = fs.readdirSync(GULP_TASKS_PATH)
         ;
 
         let tasks = [];
 
-        for (let taskFile of taskFiles) {
+        for (let taskDirectory of tasksDirectories) {
             try {
                 const
-                    taskFileDescription = fs.readFileSync(
-                        GULP_TASKS_PATH + taskFile + '/description.json'
+                    taskDescriptionFile = fs.readFileSync(
+                        GULP_TASKS_PATH + taskDirectory + '/description.json'
                     ),
-                    taskDescription = JSON.parse(taskFileDescription)
+                    taskDescription = JSON.parse(taskDescriptionFile)
                 ;
 
                 if (taskDescription.isRepeatable) {
@@ -46,17 +65,25 @@ class Configuration {
             } catch (e) {}
         }
 
+        // Set the everyTasks property so we don't have to do this every time
         this.everyTasks = tasks;
 
         return tasks;
     }
 
+    /**
+     * Get a task by its name
+     *
+     * @param  {string} The task name
+     *
+     * @return {Object} The task
+     */
     getTaskByName (taskName) {
         const
-            i = 0,
             tasks = this.tasks,
             tasksNumber = tasks.length
         ;
+        let i = 0;
 
         for (
             ;
@@ -68,6 +95,13 @@ class Configuration {
         return tasks[i];
     }
 
+    /**
+     * Check if a task is eligible for usage
+     *
+     * @param  {Object} The task to test
+     *
+     * @return {Boolean} Is the task available?
+     */
     isTaskAvailable (task) {
         const
             included = this.included,
@@ -99,6 +133,11 @@ class Configuration {
         return true;
     }
 
+    /**
+     * Get the task-choosing question
+     *
+     * @return {Object} The task-choosing question
+     */
     get tasksQuestion () {
         const
             tasks = this.tasks.filter(this.isTaskAvailable.bind(this)),
@@ -128,6 +167,15 @@ class Configuration {
         return tasksQuestion;
     }
 
+    /**
+     * Prompt the question
+     *
+     * @param  {object} question - The question to prompt
+     * @param  {string} question.name - The question name
+     * @param  {string} question.answer - The answer to the question
+     *
+     * @return {undefined}
+     */
     promptQuestion (question) {
         if (question.name.match(/task\d+/)) {
             if (question.answer === '') {
@@ -139,7 +187,7 @@ class Configuration {
             return;
         }
 
-        const task = this.getTaskByName(question.answer);
+        const task = this.configuration.getTaskByName(question.answer);
 
         this.configuration.included.push(task.name);
 
@@ -159,7 +207,7 @@ class Configuration {
         ) {
             this.subject.onNext(this.configuration.tasksQuestion);
 
-            return true;
+            return;
         }
 
         task.questions.forEach(question => {
@@ -190,9 +238,14 @@ class Configuration {
 
         this.subject.onNext(this.configuration.tasksQuestion);
 
-        return true;
+        return;
     }
 
+    /**
+     * Get the answers to the configuration questions
+     *
+     * @return {Promise} The answers
+     */
     get answers () {
         const
             subject = new this.rx.Subject(),
@@ -220,14 +273,18 @@ class Configuration {
         return answers;
     }
 
+    /**
+     * Format the answers to a usable configuration object
+     *
+     * @param  {array} The answers given to the configuration questions
+     *
+     * @return {Object} A configuration object
+     */
     formatAnswers (answers) {
-        delete answers.task;
-
         const
-            tasks = this.tasks
+            tasks = this.tasks,
+            configuration = {}
         ;
-
-        let configuration = [];
 
         for (const answerIndex in answers) {
             const
@@ -253,10 +310,10 @@ class Configuration {
                     }
                 }
 
+                // If the task has no option, we create an empty object
+                // so it's still in the configuration
                 if ( ! found) {
-                    configuration.push({
-                        name: answer
-                    });
+                    configuration[answer] = {};
                 }
 
                 continue;
@@ -268,57 +325,43 @@ class Configuration {
                     typeof task.isRepeatable !== 'undefined'
                     && task.isRepeatable
                 ),
-                configurationsNumber = configuration.length,
-                i = 0
+                taskConfigurationIsInitialized =
+                    configuration.hasOwnProperty(taskName)
             ;
 
+            if ( ! taskConfigurationIsInitialized) {
+                configuration[taskName] = {};
+            }
 
-            for (
-                i = 0;
-                i < configurationsNumber
-                && configuration[i].name !== taskName;
-                i++
-            );
+            const taskConfiguration = configuration[taskName];
 
-            if (i !== configurationsNumber) {
-                const taskConfiguration = configuration[i];
-
-                if ( ! taskIsRepeatable) {
-                    taskConfiguration[chunks[1]] = answer;
-                } else {
-                    const
-                        taskOptionsNumber =
-                            taskConfiguration.options.length,
-                        optionIndex = parseInt(chunks[1])
-                    ;
-
-                    if (optionIndex === taskOptionsNumber) {
-                        taskConfiguration.options.push({});
-                    }
-
-                    taskConfiguration.options[optionIndex][chunks[2]] =
-                        answer;
-                }
+            if ( ! taskIsRepeatable) {
+                taskConfiguration[chunks[1]] = answer;
             } else {
-                let taskConfiguration = {
-                    name: task.name
-                };
-
-                if ( ! taskIsRepeatable) {
-                    taskConfiguration[chunks[1]] = answer;
-                } else {
-                    let option = {};
-                    option[chunks[2]] = answer;
-                    taskConfiguration.options = [option];
+                if ( ! taskConfigurationIsInitialized) {
+                    taskConfiguration.options = [];
                 }
 
-                configuration.push(taskConfiguration);
+                const optionIndex = parseInt(chunks[1]);
+
+                if (optionIndex === taskConfiguration.options.length) {
+                    taskConfiguration.options.push({});
+                }
+
+                taskConfiguration.options[optionIndex][chunks[2]] = answer;
             }
         }
 
         return configuration;
     }
 
+    /**
+     * Create configuration file from answers
+     *
+     * @param  {array} The answers given to the configuration questions
+     *
+     * @return {undefined}
+     */
     createFromAnswers (answers) {
         const
             configuration = this.formatAnswers(answers),
@@ -331,7 +374,7 @@ class Configuration {
         } catch (e) {
             fs.writeFile(
                 boilerplateConfigurationFile,
-                JSON.stringify(this.formatAnswers(answers), null, 4),
+                JSON.stringify(configuration, null, 4),
                 function(err) {
                     if (err) {
                         return console.error(err);

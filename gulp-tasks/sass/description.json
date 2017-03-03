@@ -11,6 +11,11 @@
             "type": "input",
             "name": "destination",
             "message": "Where should the compiled files go?"
+        },
+        {
+            "type": "input",
+            "name": "includePaths",
+            "message": "Would you like to add an include path?"
         }
     ],
     "excludes": "less"

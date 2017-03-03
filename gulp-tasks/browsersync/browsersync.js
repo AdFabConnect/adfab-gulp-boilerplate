@@ -1,11 +1,11 @@
 const
-	browserSync   = require('browser-sync'),
-	util          = require('gulp-util'),
-	configuration = util.env.config
+    browserSync = require('browser-sync'),
+    util        = require('gulp-util'),
+    config      = util.env.config
 ;
 
 module.exports = function() {
-  return browserSync.init({
-      proxy: configuration.browsersync.domain
-  });
+    return browserSync.init({
+        proxy: config.browsersync.domain
+    });
 };

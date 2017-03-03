@@ -11,6 +11,21 @@
             "type": "input",
             "name": "destination",
             "message": "Where should the font go?"
+        },
+        {
+            "type": "input",
+            "name": "name",
+            "message": "What should the name of the font be?"
+        },
+        {
+            "type": "input",
+            "name": "path",
+            "message": "Where is the template (type \"scss\" or \"less\" for a default one)?"
+        },
+        {
+            "type": "input",
+            "name": "targetPath",
+            "message": "Where should the CSS/SASS/LESS file go?"
         }
     ]
 }
