@@ -13,11 +13,13 @@ for(taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
         gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
         taskList.push(taskName);
-        if(config.tasks[taskName].hasOwnProperty('destinationFolder')) {
+        if(config.tasks[taskName].hasOwnProperty('destination')) {
             cleanFolderList.push(config.tasks[taskName].destinationFolder);
         }
-        if(config.tasks[taskName].hasOwnProperty('watchFileList')) {
-            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watchFileList })
+        if(config.tasks[taskName].hasOwnProperty('watch')) {
+            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watch })
+        } else if(config.tasks[taskName].hasOwnProperty('source')) {
+            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].source })
         }
     }
 }
