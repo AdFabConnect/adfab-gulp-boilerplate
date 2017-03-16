@@ -1,7 +1,9 @@
-var config        = require('../../../gulp-config');
-var gulp          = require('gulp');
-
 module.exports = function() {
-  return gulp.src(config.source.fontFileList)
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.fontsFolderName));
+    var config        = require('../../../gulp-config');
+    var gulp          = require('gulp');
+
+    var fontsConfig = config.tasks.fonts;
+
+    return gulp.src(fontsConfig.source, {cwd: config.sourceRoot})
+        .pipe(gulp.dest(config.destinationRoot + fontsConfig.destination));
 };

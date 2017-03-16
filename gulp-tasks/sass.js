@@ -1,20 +1,20 @@
-const config       = require('../../../gulp-config');
-const gulp         = require('gulp');
-const plumber      = require('gulp-plumber');
-const sass         = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const notify       = require('gulp-notify');
-const concat       = require('gulp-concat');
-const sourcemaps   = require('gulp-sourcemaps');
-const cleanCss = require('gulp-clean-css');
-const gulpif       = require('gulp-if');
-const util         = require('gulp-util');
-const browserSync  = require('browser-sync');
-
-// TODO : optimize css with gulp-cssmin and gulp-uncss
-// TODO : configure autoprefixer only for the targeted browsers
 module.exports = function() {
-  return gulp.src(config.source.sassCompileFileList)
+    const config       = require('../../../gulp-config');
+    const gulp         = require('gulp');
+    const plumber      = require('gulp-plumber');
+    const sass         = require('gulp-sass');
+    const autoprefixer = require('gulp-autoprefixer');
+    const notify       = require('gulp-notify');
+    const concat       = require('gulp-concat');
+    const sourcemaps   = require('gulp-sourcemaps');
+    const cleanCss = require('gulp-clean-css');
+    const gulpif       = require('gulp-if');
+    const util         = require('gulp-util');
+    const browserSync  = require('browser-sync');
+
+    var sassConfig = config.tasks.sass;
+
+    return gulp.src(sassConfig.source, {cwd: config.sourceRoot})
     .pipe(plumber({
         errorHandler: notify.onError({
             message: "<%= error.message %>",
@@ -22,11 +22,11 @@ module.exports = function() {
         })
     }))
     .pipe(gulpif(!util.env.production, sourcemaps.init()))
-    .pipe(sass(config.sassConfigs))
-    .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9', 'iOS >= 7'] }))
+    .pipe(sass(sassConfig.config))
+    .pipe(autoprefixer({ browsers: sassConfig.browsers }))
     .pipe(gulpif(util.env.production, cleanCss()))
     .pipe(gulpif( ! util.env.production, sourcemaps.write()))
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
+    .pipe(gulp.dest(config.destinationRoot + sassConfig.destination))
     .pipe(browserSync.stream())
     .pipe(notify('Successfully compiled SASS'))
     .on('error', function() {
