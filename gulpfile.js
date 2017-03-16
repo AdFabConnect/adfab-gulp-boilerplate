@@ -9,19 +9,15 @@ var cleanFolderList = [];
 var taskList = [];
 var watchTaskList = [];
 
-// Lists task to require those defined in gulp-config
 for(taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
         gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
         taskList.push(taskName);
         if(config.tasks[taskName].hasOwnProperty('destinationFolder')) {
-            cleanFolderList.push(config.destinationRoot + config.tasks[taskName].destinationFolder);
+            cleanFolderList.push(config.tasks[taskName].destinationFolder);
         }
-        
-        if(config.tasks[taskName].hasOwnProperty('watch')) {
-            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watch })
-        } else {
-            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].source })
+        if(config.tasks[taskName].hasOwnProperty('watchFileList')) {
+            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watchFileList })
         }
     }
 }
@@ -53,7 +49,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', ['build'],  function() {
     for(var index in watchTaskList) {
         var watchTask = watchTaskList[index];
-        watch(watchTask.fileList, {base: config.sourceRoot}, function() {
+        watch(watchTask.fileList, function() {
             return runSequence([watchTask.task]);
         });
     }
