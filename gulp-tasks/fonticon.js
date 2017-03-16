@@ -8,7 +8,7 @@ module.exports = function() {
 
     var fonticonConfig = config.tasks.fonticon;
     
-    return gulp.src(fonticonConfig.source, {cws: config.sourceRoot})
+    return gulp.src(fonticonConfig.source, {cwd: config.sourceRoot})
       .pipe(plumber({errorHandler: notify.onError({
           message: "<%= error.message %>",
           title: "Views Error"

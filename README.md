@@ -16,20 +16,38 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 ## Installation
 
 ```shell
-npm install git+ssh://git@github.com:AdFabConnect/adfab-gulp-boilerplate.git#v0.9.2
+npm install adfab-gulp-boilerplate
 ```
 
 Upon installation, two files will be copied to the root of your project: `gulpfile.js` and `gulp-config.js`.
 
 ## Usage
 
-### Enable the tasks you need
-
-Just check `gulpfile.js` out de-comment what you need and comment out what you don't.
-
-### Configure the tasks
+### Configure the tasks you need
 
 Every task rely on the `gulp-config.js` file for their configuration. Just fill-in the values you need.
+* vhost: your local url,
+* sourceRoot: root path where your assets will be stored
+* destinationRoot: the path where your public final assets will be stored
+* tasks: the list of all tasks you watn to run. See details in `gulp-config.js` for details of every options of below for details about how it works 
+ 
+### Task list
+
+You can comment of remove the takss you don't need. For exemple you will certainly need only one from less, saas and postcss.
+
+Every tasks has a desktop notification when succeeded or failed, with detailed logs.
+
+Here is a list of current takss available:
+* sass: to compile scss into css file, with autoprefixer, sourcemaps for development, minify for production
+* less: as sass, but for less
+* postcss: the same, but for postcss
+* fonticon: takes all svg files in a folder to create a fonticon and a css/less/sass file to be included in your final css
+* jslibs: concatenates and uglify all your js libs into one single file
+* scripts: parse your js with babelify for es6 compatibility. adds sourcemaps for dev, uglify for production
+* views: minify your html
+* images: optimizes image weight when copying
+* fonts: juste copy your font files
+* svgsprite: create a svg sprite from all svg in a folder
 
 ### Browser live reloads
 
@@ -42,6 +60,19 @@ gulp serve
 It acts as a proxy to the domain you specified in `gulp-config.js` (property `vhost`). You can now access your project by specifying the `3000` port (if you usually access your project via http://project.localhost/, now it would be http://project.localhost:3000/).
 
 You can also test it in production mode by passing the `--production` option. That way, it will remove *sourcemaps* and minify JS and CSS.
+
+### Development and production
+
+Development mode (by default), adds sourcemaps to your code
+
+You can run:
+ 
+```shell
+gulp --production
+```
+
+it will remove sourcemap genreration and minify your js and css.
+
 
 ## ISC License
 
