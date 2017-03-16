@@ -1,15 +1,14 @@
-var config        = require('../../../gulp-config');
-var gulp          = require('gulp');
-var plumber       = require('gulp-plumber');
-var notify        = require('gulp-notify');
-
-var iconfont = require('gulp-iconfont');
-var iconfontCss = require('gulp-iconfont-css');
-
-var fonticonConfig = config.tasks.fonticon;
-
 module.exports = function() {
-  return gulp.src(fonticonConfig.entryFileList)
+    var config        = require('../../../gulp-config');
+    var gulp          = require('gulp');
+    var plumber       = require('gulp-plumber');
+    var notify        = require('gulp-notify');
+    var iconfont = require('gulp-iconfont');
+    var iconfontCss = require('gulp-iconfont-css');
+
+    var fonticonConfig = config.tasks.fonticon;
+    
+    return gulp.src(fonticonConfig.source, {cws: config.sourceRoot})
       .pipe(plumber({errorHandler: notify.onError({
           message: "<%= error.message %>",
           title: "Views Error"
@@ -24,7 +23,7 @@ module.exports = function() {
         fontName: fonticonConfig.fontName,
         formats: fonticonConfig.format
       }))
-      .pipe(gulp.dest(fonticonConfig.destinationFolder))
+      .pipe(gulp.dest(config.destinationRoot + fonticonConfig.destination))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
       .on('error', function() {
         this.emit("error", new Error("SVG font icon compilation Error"));

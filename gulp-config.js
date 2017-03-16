@@ -89,6 +89,12 @@ module.exports = {
             compileFileList: [ './src/assets/fonts/**/*' ], // The files you are compiling
             watchFileList: [ './src/assets/images/**/*' ], // The files you are watching
             destinationFolder: './public/images',  // Name of the folder where put view files
+        },
+        
+        svgsprite: {
+            compileFileList: [ './src/assets/svg/numbers/*.svg' ], // The files you are compiling
+            watchFileList: [ './src/assets/svg/numbers/*.svg' ], // The files you are watching
+            destinationFolder: './public/images'  // Name of the folder where put view files
         }
     }
 };
