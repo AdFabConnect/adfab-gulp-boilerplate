@@ -2,10 +2,10 @@ var config        = require('../../../gulp-config');
 var gulp          = require('gulp');
 var imagemin      = require('gulp-imagemin');
 
-// TODO : optimize images with gulp-imagemin and gulp-svgmin
+var imagesConfig = config.tasks.images;
 
 module.exports = function() {
-  return gulp.src(config.source.imageFileList)
+  return gulp.src(imagesConfig.compileFileList)
     .pipe(imagemin())
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.imagesFolderName));
+    .pipe(gulp.dest(imagesConfig.destinationFolder));
 };

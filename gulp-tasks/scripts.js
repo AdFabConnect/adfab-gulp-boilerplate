@@ -30,7 +30,7 @@ module.exports = function() {
         };
     };
     // TODO: If no babel presets, don't use babel at all
-    var bundler = browserify( scriptConfig.entryFileList, {
+    var bundler = browserify( scriptConfig.compileFileList, {
         debug: !util.env.production,
         cache: {},
         packageCache: {},

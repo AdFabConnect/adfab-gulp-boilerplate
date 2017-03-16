@@ -12,8 +12,10 @@ var util = require('gulp-util');
 var browserSync = require('browser-sync');
 var lesshint = require('gulp-lesshint');
 
+var lessConfig = config.tasks.less;
+
 module.exports = function() {
-    return gulp.src(config.source.lessCompileFileList)
+    return gulp.src(lessConfig.compileFileList)
         .pipe(plumber({errorHandler: notify.onError({
             message: "<%= error.message %>",
             title: "Less Error"
@@ -21,10 +23,10 @@ module.exports = function() {
         .pipe(gulpif(!util.env.production, sourcemaps.init()))
         .pipe(less())
         // .pipe(concat(config.destination.cssFileName))
-        .pipe(autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
+        .pipe(autoprefixer({ browsers: lessConfig.browsers }))
         .pipe(gulpif(util.env.production, cleanCss()))
         .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
-        .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
+        .pipe(gulp.dest(lessConfig.destinationFolder))
         .pipe(browserSync.stream())
         .pipe(notify('Successfully compiled Less'))
 };

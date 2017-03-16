@@ -14,16 +14,17 @@ const extend       = require('postcss-extend');
 const bem          = require('postcss-bem');
 const cssnext      = require('postcss-cssnext');
 
+var postcssConfig = config.tasks.postcss; 
 
 var processors = [
     Import,
-    bem(config.postCSSConfigs.bem),
+    bem(postcssConfig.config.bem),
     extend,
-    cssnext(config.postCSSConfigs.next)
+    cssnext(postcssConfig.config.next)
 ];
 
 module.exports = function() {
-    return gulp.src(config.source.postCSSCompileFileList)
+    return gulp.src(postcssConfig.compileFileList)
         .pipe(plumber({
             errorHandler: notify.onError({
                 message: "<%= error.message %>",
@@ -32,10 +33,10 @@ module.exports = function() {
         }))
         .pipe(gulpif(!util.env.production, sourcemaps.init()))
         .pipe(postcss(processors))
-        .pipe(concat(config.destination.cssFileName))
+        .pipe(concat(postcssConfig.destinationFileName))
         .pipe(gulpif(util.env.production, cleanCss()))
         .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
-        .pipe(gulp.dest(config.destination.assetsFolder + config.destination.cssFolderName))
+        .pipe(gulp.dest(postcssConfig.destinationFolder))
         .pipe(browserSync.stream())
         .pipe(notify('Successfully compiled postCSS'))
         .on('error', function() {

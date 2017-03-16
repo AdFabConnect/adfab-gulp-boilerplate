@@ -6,14 +6,16 @@ var htmlmin = require('gulp-htmlmin');
 var browserSync = require('browser-sync');
 var gulpif = require('gulp-if');
 
+var viewsConfig = config.tasks.views;
+
 module.exports = function() {
-  return gulp.src(config.source.viewFileList)
+  return gulp.src(viewsConfig.compileFileList)
     .pipe(plumber({errorHandler: notify.onError({
       message: "<%= error.message %>",
       title: "Views Error"
     })}))
-    .pipe(gulpif(config.minifyHTML, htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest(config.destination.assetsFolder + config.destination.viewsFolderName))
+    .pipe(gulpif(viewsConfig.minifyHTML, htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest(viewsConfig.destinationFolder))
     .pipe(browserSync.stream())
     .pipe(notify({ message: 'Successfully compiled Views', onLast: true}))
     .on('error', function() {
