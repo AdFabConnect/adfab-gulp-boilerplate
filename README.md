@@ -30,15 +30,15 @@ Every task rely on the `gulp-config.js` file for their configuration. Just fill-
 * vhost: your local url,
 * sourceRoot: root path where your assets will be stored
 * destinationRoot: the path where your public final assets will be stored
-* tasks: the list of all tasks you watn to run. See details in `gulp-config.js` for details of every options of below for details about how it works 
+* tasks: the list of all tasks you want to run. See details in `gulp-config.js` for details of every options of below for details about how it works 
  
 ### Task list
 
-You can comment of remove the takss you don't need. For exemple you will certainly need only one from less, saas and postcss.
+You can comment of remove the tasks you don't need. For exemple you will certainly need only one from less, sass and postcss.
 
 Every tasks has a desktop notification when succeeded or failed, with detailed logs.
 
-Here is a list of current takss available:
+Here is a list of current taks available:
 * sass: to compile scss into css file, with autoprefixer, sourcemaps for development, minify for production
 * less: as sass, but for less
 * postcss: the same, but for postcss

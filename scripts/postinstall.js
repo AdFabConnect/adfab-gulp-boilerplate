@@ -15,6 +15,10 @@ var copyyFileList =
     {
         input: '.editorconfig',
         output: '../../.editorconfig'
+    },
+    {
+        input: '.eslintrc.json',
+        output: '../../.eslintrc.json'
     }
 ];
 
