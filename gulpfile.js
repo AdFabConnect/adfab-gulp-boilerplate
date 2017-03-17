@@ -14,7 +14,7 @@ for(taskName in config.tasks) {
         gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
         taskList.push(taskName);
         if(config.tasks[taskName].hasOwnProperty('destination')) {
-            cleanFolderList.push(config.tasks[taskName].destinationFolder);
+            cleanFolderList.push(config.tasks[taskName].destination);
         }
         if(config.tasks[taskName].hasOwnProperty('watch')) {
             watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watch })
