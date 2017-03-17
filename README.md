@@ -8,6 +8,7 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 * JS compilation
 * [Babel](https://babeljs.io/) transpiler (ES6 support FTW)
 * [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) compilation
+* JS linting
 * Notifications on success and error
 * Fonticon generation
 * SVG Sprite generation
@@ -41,11 +42,12 @@ Here is a list of current takss available:
 * sass: to compile scss into css file, with autoprefixer, sourcemaps for development, minify for production
 * less: as sass, but for less
 * postcss: the same, but for postcss
-* fonticon: takes all svg files in a folder to create a fonticon and a css/less/sass file to be included in your final css
+* [fonticon](https://www.npmjs.com/package/gulp-iconfont): takes all svg files in a folder to create a fonticon and a [css/less/sass](https://www.npmjs.com/package/gulp-iconfont-css) file to be included in your final css
 * jslibs: concatenates and uglify all your js libs into one single file
 * scripts: parse your js with babelify for es6 compatibility. adds sourcemaps for dev, uglify for production
+* eslint: checks your js code
 * views: minify your html
-* images: optimizes image weight when copying
+* [images](https://www.npmjs.com/package/gulp-imagemin): optimizes image weight when copying
 * fonts: juste copy your font files
 * svgsprite: create a svg sprite from all svg in a folder
 

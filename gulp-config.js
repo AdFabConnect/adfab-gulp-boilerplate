@@ -66,6 +66,13 @@ module.exports = {
             babelPresets: 'es2015' // Preset used with Babel
         },
 
+        eslint: {
+            source: [ 'scripts/**/*.js' ],
+            config: {
+                globals: [], // global vars of your project (like ['$', 'jQuery'] for projects using jQuery)
+            }
+        },
+
         // Copy templates files. Minify html during process
         views: {
             source: [ 'views/**/*.html', 'views/**/*.php' ], // The files you are compiling

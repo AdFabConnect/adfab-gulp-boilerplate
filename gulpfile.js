@@ -51,7 +51,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', ['build'],  function() {
     for(var index in watchTaskList) {
         var watchTask = watchTaskList[index];
-        watch(watchTask.fileList, function() {
+        watch(watchTask.fileList, { cwd: config.sourceRoot }, function() {
             return runSequence([watchTask.task]);
         });
     }
