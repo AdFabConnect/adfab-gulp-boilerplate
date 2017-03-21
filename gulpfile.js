@@ -28,7 +28,7 @@ for(taskName in config.tasks) {
  * Clean build directory
  */
 gulp.task('clean', function(cb) {
-    del(cleanFolderList, cb);
+    del(cleanFolderList, { cwd: config.sourceRoot }, cb);
 });
 
 /**
@@ -51,9 +51,11 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', ['build'],  function() {
     for(var index in watchTaskList) {
         var watchTask = watchTaskList[index];
-        watch(watchTask.fileList, { cwd: config.sourceRoot }, function() {
-            return runSequence([watchTask.task]);
-        });
+        watch(watchTask.fileList, { cwd: config.sourceRoot }, function(task) {
+            return function() {
+                return runSequence([task]);
+            }
+        }(watchTask.task));
     }
 });
 
