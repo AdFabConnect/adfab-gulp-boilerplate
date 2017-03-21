@@ -1,16 +1,18 @@
-var config        = require('../../../gulp-config');
-var gulp          = require('gulp');
-var plumber       = require('gulp-plumber');
-var notify        = require('gulp-notify');
-var lesshint = require('gulp-lesshint');
-
 module.exports = function() {
-    return gulp.src(config.source.lessWatchFileList)
+    var config        = require('../../../gulp-config');
+    var gulp          = require('gulp');
+    var plumber       = require('gulp-plumber');
+    var notify        = require('gulp-notify');
+    var lesshint = require('gulp-lesshint');
+
+    var lesshintConfig = config.tasks.lesshint;
+console.log('less hint task', lesshintConfig);
+    return gulp.src(lesshintConfig.source, {cwd: config.sourceRoot })
         .pipe(plumber({errorHandler: notify.onError({
             message: "<%= error.message %>",
-            title: "Less Error"
+            title: "Less hint Error"
         })}))
         .pipe(lesshint())
         .pipe(lesshint.reporter())
-        .pipe(notify('Successfully compiled Less'))
+        .pipe(notify({message: 'Successfully hint Less', onLast: true }))
 };

@@ -36,6 +36,10 @@ module.exports = {
             browsers: ['last 2 versions'], // Browser list to support for autoprefixer examples: ['last 2 versions', 'ie 9', 'iOS >= 7']
         },
 
+        lesshint: {
+            source: [ 'less/**/*.less' ] // The .less files you want to lint
+        },
+
         // Compiles Post CSS
         postcss: {
             source: [ 'pcss/**/*.pcss' ], // The files you are compiling
