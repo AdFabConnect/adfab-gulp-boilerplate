@@ -8,10 +8,10 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 * JS compilation
 * [Babel](https://babeljs.io/) transpiler (ES6 support FTW)
 * [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) compilation
-* JS linting
-* Notifications on success and error
-* Fonticon generation
-* SVG Sprite generation
+* Linting for [JS](https://www.npmjs.com/package/gulp-eslint) and [LESS](https://www.npmjs.com/package/gulp-lesshint)
+* Desktop notifications on success and error
+* [Fonticon](gulp-iconfont) generation
+* [SVG Sprite](gulp-svgstore) generation
 * Production mode: JS / CSS minification + sources maps removal
 
 ## Installation
