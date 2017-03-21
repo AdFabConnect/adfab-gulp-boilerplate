@@ -14,6 +14,8 @@ module.exports = function() {
 
     var sassConfig = config.tasks.sass;
 
+    var isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
+
     return gulp.src(sassConfig.source, {cwd: config.sourceRoot})
     .pipe(plumber({
         errorHandler: notify.onError({
@@ -27,7 +29,7 @@ module.exports = function() {
     .pipe(gulpif(util.env.production, cleanCss()))
     .pipe(gulpif( ! util.env.production, sourcemaps.write()))
     .pipe(gulp.dest(config.destinationRoot + sassConfig.destination))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(isWatching, browserSync.stream({once: true})))
     .pipe(notify('Successfully compiled SASS'))
     .on('error', function() {
       this.emit("error", new Error("SASS compilation Error"));
