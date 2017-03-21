@@ -15,6 +15,8 @@ module.exports = function() {
 
     var lessConfig = config.tasks.less;
 
+    var isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
+
     return gulp.src(lessConfig.source, {cwd: config.sourceRoot})
         .pipe(plumber({errorHandler: notify.onError({
             message: "<%= error.message %>",
@@ -27,6 +29,6 @@ module.exports = function() {
         .pipe(gulpif(util.env.production, cleanCss()))
         .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
         .pipe(gulp.dest(config.destinationRoot + lessConfig.destination))
-        .pipe(browserSync.stream())
+        .pipe(gulpif(isWatching, browserSync.stream({once: true})))
         .pipe(notify('Successfully compiled Less'))
 };
