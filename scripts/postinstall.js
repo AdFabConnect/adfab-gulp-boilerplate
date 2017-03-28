@@ -19,6 +19,10 @@ var copyyFileList =
     {
         input: '.eslintrc.json',
         output: '../../.eslintrc.json'
+    },
+    {
+        input: '.sass-lint.yml',
+        output: '../../.sass-lint.yml'
     }
 ];
 

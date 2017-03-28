@@ -5,10 +5,11 @@ The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so y
 * Automatic reloading of the browser on code modification (using [Browsersync](https://www.browsersync.io/))
 * CSS / JS Sourcemaps
 * HTML minification
+* [Image minification](https://www.npmjs.com/package/gulp-imagemin)
 * JS compilation
 * [Babel](https://babeljs.io/) transpiler (ES6 support FTW)
 * [SASS](http://sass-lang.com/) or [LESS](http://lesscss.org/) compilation
-* Linting for [JS](https://www.npmjs.com/package/gulp-eslint) and [LESS](https://www.npmjs.com/package/gulp-lesshint)
+* Linting for [JS](https://www.npmjs.com/package/gulp-eslint), [SASS](https://www.npmjs.com/package/gulp-sass-lint) and [LESS](https://www.npmjs.com/package/gulp-lesshint)
 * Desktop notifications on success and error
 * [Fonticon](gulp-iconfont) generation
 * [SVG Sprite](gulp-svgstore) generation
@@ -41,6 +42,8 @@ Every tasks has a desktop notification when succeeded or failed, with detailed l
 Here is a list of current taks available:
 * sass: to compile scss into css file, with autoprefixer, sourcemaps for development, minify for production
 * less: as sass, but for less
+* sasslint: checks your sass code
+* lesshint: checks your less code
 * postcss: the same, but for postcss
 * [fonticon](https://www.npmjs.com/package/gulp-iconfont): takes all svg files in a folder to create a fonticon and a [css/less/sass](https://www.npmjs.com/package/gulp-iconfont-css) file to be included in your final css
 * jslibs: concatenates and uglify all your js libs into one single file

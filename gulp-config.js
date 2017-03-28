@@ -28,6 +28,12 @@ module.exports = {
             }
         },
 
+        sasslint: {
+            source: [ 'sass/**/*.scss' ], // The .sass files you want to lint
+            ignore: [] // The .sass files you want to ignore (for example lib css files not formatted like our files). Warning: write ignore file name from root (./src/asset/sass/file.scss)
+            // You can ignore sass lint from line with comment like "//sass-lint:disable-line the-rule" at the end of the line
+        },
+
         // Compiles LESS
         less: {
             source: [ 'less/style.less' ], // The files you are compiling
