@@ -30,7 +30,7 @@ module.exports = function() {
     .pipe(gulpif( ! util.env.production, sourcemaps.write()))
     .pipe(gulp.dest(config.destinationRoot + sassConfig.destination))
     .pipe(gulpif(isWatching, browserSync.stream({once: true})))
-    .pipe(notify('Successfully compiled SASS'))
+    .pipe(notify({ message: 'Successfully compiled SASS', onLast: true }))
     .on('error', function() {
       this.emit("error", new Error("SASS compilation Error"));
     });

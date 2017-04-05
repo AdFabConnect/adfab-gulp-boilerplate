@@ -27,8 +27,8 @@ for(taskName in config.tasks) {
 /**
  * Clean build directory
  */
-gulp.task('clean', function(cb) {
-    del(cleanFolderList, { cwd: config.destinationRoot }, cb);
+gulp.task('clean', function() {
+    return del(cleanFolderList, { cwd: config.destinationRoot });
 });
 
 /**
