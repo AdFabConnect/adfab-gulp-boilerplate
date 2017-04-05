@@ -1,5 +1,9 @@
 # Adfab Gulp Boilerplate
 
+[![NPM](https://nodei.co/npm/adfab-gulp-boilerplate.png?compact=true)](https://npmjs.org/package/adfab-gulp-boilerplate)
+
+[![npm version](https://badge.fury.io/js/adfab-gulp-boilerplate.svg)](http://badge.fury.io/js/adfab-gulp-boilerplate)
+
 The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel, it includes:
 
 * Automatic reloading of the browser on code modification (using [Browsersync](https://www.browsersync.io/))

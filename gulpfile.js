@@ -28,7 +28,7 @@ for(taskName in config.tasks) {
  * Clean build directory
  */
 gulp.task('clean', function(cb) {
-    del(cleanFolderList, { cwd: config.destinationRoot }, cb);
+    return del(cleanFolderList, { cwd: config.destinationRoot });
 });
 
 /**
@@ -61,3 +61,15 @@ gulp.task('watch', ['build'],  function() {
 
 gulp.task('serve', ['build', 'watch', 'browser-sync']);
 gulp.task('default', ['build'], function () { });
+
+
+//npm install gulp gulp-mocha
+
+var mocha = require('gulp-mocha');
+
+gulp.task('test', function() {
+  return gulp.src(['tests/gulp/test-*.js'], { read: false })
+    .pipe(mocha({
+      reporter: 'spec'
+    }));
+});

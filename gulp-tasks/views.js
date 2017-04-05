@@ -13,7 +13,7 @@ module.exports = function() {
 
     return gulp.src(viewsConfig.source, {cwd: config.sourceRoot})
         .pipe(plumber({errorHandler: notify.onError({
-          message: "<%= error.message %>",
+          message: "<%= error.message %> in <%= error.fileName %>",
           title: "Views Error"
         })}))
         .pipe(gulpif(viewsConfig.minifyHTML, htmlmin({collapseWhitespace: true})))
