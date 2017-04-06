@@ -3,8 +3,8 @@
 [![NPM](https://nodei.co/npm/adfab-gulp-boilerplate.png?compact=true)](https://npmjs.org/package/adfab-gulp-boilerplate)
 
 [![npm version](https://badge.fury.io/js/adfab-gulp-boilerplate.svg)](http://badge.fury.io/js/adfab-gulp-boilerplate)
-[![Dependency Status](https://david-dm.org/AdfabConnect/adfab-gulp-boilerplate.svg?theme=shields.io)](https://david-dm.org/AdfabConnect/adfab-gulp-boilerplate)
-[![devDependency Status](https://david-dm.org/AdfabConnect/adfab-gulp-boilerplate/dev-status.svg?theme=shields.io)](https://david-dm.org/AdfabConnect/adfab-gulp-boilerplate#info=devDependencies)
+[![Dependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate)
+[![devDependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate/dev-status.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate#info=devDependencies)
 
 The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel, it includes:
 
