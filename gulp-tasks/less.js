@@ -11,7 +11,6 @@ module.exports = function() {
     var gulpif = require('gulp-if');
     var util = require('gulp-util');
     var browserSync = require('browser-sync');
-    var lesshint = require('gulp-lesshint');
 
     var lessConfig = config.tasks.less;
 
