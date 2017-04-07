@@ -5,6 +5,7 @@
 [![npm version](https://badge.fury.io/js/adfab-gulp-boilerplate.svg)](http://badge.fury.io/js/adfab-gulp-boilerplate)
 [![Dependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate)
 [![devDependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate/dev-status.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate#info=devDependencies)
+[![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://raw.githubusercontent.com/AdFabConnect/adfab-gulp-boilerplate/master/LICENSE)
 
 The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel, it includes:
 
@@ -83,12 +84,3 @@ gulp --production
 ```
 
 it will remove sourcemap genreration and minify your js and css.
-
-
-## ISC License
-
-Copyright 2017 Adfab
-
-Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
