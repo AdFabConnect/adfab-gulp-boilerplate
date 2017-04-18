@@ -11,7 +11,7 @@ var expect = chai.expect;
 
 var gulp = require('gulp');
 
-const lessPipe = require('../node_modules/adfab-gulp-boilerplate/pipe/less');
+const lessPipe = require('../pipe/less');
 
 describe('gulp less', function() {
     describe('compiled less', function() {

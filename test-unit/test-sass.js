@@ -11,7 +11,7 @@ var expect = chai.expect;
 
 var gulp = require('gulp');
 
-const sassPipe = require('../node_modules/adfab-gulp-boilerplate/pipe/sass');
+const sassPipe = require('../pipe/sass');
 
 describe('gulp sass', function() {
     describe('compiled sass', function() {

@@ -15,7 +15,8 @@
     "src": "./src"
   },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js"
+    "postinstall": "node scripts/postinstall.js",
+    "test-unit": "gulp test-unit"
   },
   "dependencies": {
     "babel-core": "^6.24.0",
