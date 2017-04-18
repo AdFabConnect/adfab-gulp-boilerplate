@@ -6,7 +6,7 @@ module.exports = function() {
     var lesshint = require('gulp-lesshint');
 
     var lesshintConfig = config.tasks.lesshint;
-
+console.log('less hint task', lesshintConfig);
     return gulp.src(lesshintConfig.source, {cwd: config.sourceRoot })
         .pipe(plumber({errorHandler: notify.onError({
             message: "<%= error.message %>",

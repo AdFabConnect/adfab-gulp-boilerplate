@@ -53,8 +53,14 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^9.1.0",
     "run-sequence": "^1.2.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-fs": "^1.0.0",
+    "gulp-mocha": "^4.3.0",
+    "lazypipe": "^1.0.1",
+    "map-stream": "0.0.7",
+    "vinyl-string": "^1.0.2"
   }
 }

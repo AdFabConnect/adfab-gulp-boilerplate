@@ -36,7 +36,7 @@ module.exports = {
 
         // Compiles LESS
         less: {
-            source: [ 'less/style.less' ], // The files you are compiling
+            source: [ 'less/style-less.less' ], // The files you are compiling
             watch: [ 'less/**/*.less' ], // The files you are watching
             destination: 'css', // Name of the folder where put css files
             browsers: ['last 2 versions'], // Browser list to support for autoprefixer examples: ['last 2 versions', 'ie 9', 'iOS >= 7']

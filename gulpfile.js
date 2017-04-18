@@ -11,7 +11,7 @@ var watchTaskList = [];
 
 for(taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
-        gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/gulp-tasks/' + taskName));
+        gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
         taskList.push(taskName);
         if(config.tasks[taskName].hasOwnProperty('destination')) {
             cleanFolderList.push(config.tasks[taskName].destination);
@@ -61,3 +61,59 @@ gulp.task('watch', ['build'],  function() {
 
 gulp.task('serve', ['build', 'watch', 'browser-sync']);
 gulp.task('default', ['build'], function () { });
+
+
+
+//npm install gulp gulp-mocha
+
+var mocha = require('gulp-mocha');
+var fs = require('fs');
+
+gulp.task('test-unit', function() {
+    for(var index in taskList) {
+        var taskName = taskList[index];
+        try {
+            // Checks if task has a unit test file
+            fs.statSync('test-unit/test-' + taskName + '.js');
+    
+            gulp.src(['test-unit/test-' + taskName + '.js'], { read: false })
+            .pipe(mocha({
+                reporter: 'spec'
+            }));
+        } catch (err) {
+            console.log('no unit test for ' + taskName);
+        }
+    }
+    
+    return true;
+});
+
+gulp.task('test-func', ['clean'], function() {
+  for(var index in taskList) {
+      var taskName = taskList[index];
+      try {
+          // Checks if task has a unit test file
+          fs.statSync('test-func/test-' + taskName + '.js');
+
+//          gulp.task(taskName + '-test', function() {
+//            gulp.src(['test/test-' + taskName + '.js'], { read: false })
+//            .pipe(mocha({
+//              reporter: 'spec'
+//            }));
+//          }(taskName));
+//          // Executes task
+//          runSequence(taskName, taskName + '-test');
+          // Runs task
+          gulp.start(taskName);
+
+          // Runs task tests
+          gulp.src(['test/test-' + taskName + '.js'], { read: false })
+          .pipe(mocha({
+            reporter: 'spec'
+          }));
+      } catch (err) {
+          console.log('no functionnal test for ' + taskName);
+      }
+  }
+  return true;
+});
