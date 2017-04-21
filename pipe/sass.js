@@ -5,8 +5,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps   = require('gulp-sourcemaps');
 const cleanCss = require('gulp-clean-css');
 const gulpif       = require('gulp-if');
-const util         = require('gulp-util');
-
+const util         = require('gulp-util'); 
 var sassConfig = config.tasks.sass;
 
 module.exports = lazypipe()
