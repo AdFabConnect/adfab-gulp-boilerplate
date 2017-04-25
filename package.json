@@ -3,6 +3,9 @@
   "version": "1.5.0",
   "author": "Adfab <dev@adfab.fr> (http://adfab.fr/)",
   "description": "Adfab's boilerplate. Helps you kick-start a front-end project within minutes.",
+  "keywords": [
+    "gulp", "boilerplate", "starter", "front-end", "build", "sass", "less", "postcss", "javascript", "babel", "fonticon", "svgsprite"
+  ],
   "homepage": "https://github.com/AdFabConnect/adfab-gulp-boilerplate",
   "repository": {
     "type": "git",
@@ -11,7 +14,7 @@
   "bugs": "https://github.com/AdFabConnect/adfab-gulp-boilerplate/issues",
   "license": "ISC",
   "directories": {
-    "gulp-tasks": "./gulp-tasks",
+    "gulp-tasks": "./tasks",
     "src": "./src"
   },
   "scripts": {

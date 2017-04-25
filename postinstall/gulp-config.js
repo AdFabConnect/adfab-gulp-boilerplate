@@ -94,6 +94,7 @@ module.exports = {
         images: {
             source: [ 'images/**/*' ], // The files you are compiling
             destination: 'images',  // Name of the folder where put images files
+            minify: true // Reduces images weight during copy
         },
 
         // Copy fonts from source to destination

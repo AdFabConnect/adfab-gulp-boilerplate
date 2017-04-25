@@ -16,7 +16,7 @@ util.env.boilerplate = {
 
 for(var taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
-        gulp.task(taskName, require('./tasks/' + taskName));
+        gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
         taskList.push(taskName);
         if(config.tasks[taskName].hasOwnProperty('destination')) {
             cleanFolderList.push(config.tasks[taskName].destination);
