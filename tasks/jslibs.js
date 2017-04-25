@@ -1,11 +1,12 @@
 module.exports = function() {
-    var config        = require('../../../gulp-config');
-    var gulp          = require('gulp');
-    var concat = require('gulp-concat');
+    const gulp          = require('gulp');
+    const concat = require('gulp-concat');
+    const util = require('gulp-util');
 
-    var jslibsConfig = config.tasks.jslibs;
+    const config = util.env.boilerplate.config;
+    const jslibsConfig = config.tasks.jslibs;
 
     return gulp.src(jslibsConfig.source, {cwd: config.sourceRoot})
-  	    .pipe(concat(jslibsConfig.destinationFile))
-  	    .pipe(gulp.dest(config.destinationRoot + jslibsConfig.destination));
+        .pipe(concat(jslibsConfig.destinationFile))
+        .pipe(gulp.dest(config.destinationRoot + jslibsConfig.destination));
 };

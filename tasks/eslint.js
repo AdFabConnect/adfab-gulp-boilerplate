@@ -1,14 +1,15 @@
 module.exports = function() {
-    var config  = require('../../../gulp-config');
-    var gulp    = require('gulp');
-    var eslint  = require('gulp-eslint');
-    var notify        = require('gulp-notify');
-
-    var eslintConfig = config.tasks.eslint;
+    const gulp    = require('gulp');
+    const eslint  = require('gulp-eslint');
+    const notify        = require('gulp-notify');
+    const util = require('gulp-util');
+    
+    const config = util.env.boilerplate.config;
+    const eslintConfig = config.tasks.eslint;
 
     return gulp
         .src(eslintConfig.source, {cwd: config.sourceRoot })
         .pipe(eslint(eslintConfig.config || {}))
         .pipe(eslint.format())
-        .pipe(notify({message: 'Successfully lint JS', onLast: true }))
+        .pipe(notify({message: 'Successfully lint JS', onLast: true }));
 };

@@ -1,9 +1,11 @@
 module.exports = function() {
-    var config        = require('../../../gulp-config');
-    var gulp          = require('gulp');
-    var imagemin      = require('gulp-imagemin');
+    const gulp          = require('gulp');
+    const imagemin      = require('gulp-imagemin');
 
-    var imagesConfig = config.tasks.images;
+    const util = require('gulp-util');
+    
+    const config = util.env.boilerplate.config;
+    const imagesConfig = config.tasks.images;
 
     return gulp.src(imagesConfig.source, {cwd: config.sourceRoot})
         .pipe(imagemin())

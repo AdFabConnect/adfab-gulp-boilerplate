@@ -3,31 +3,35 @@ var ncp = require('ncp').ncp;
 
 //Where "src" folder is and have to be place
 var copyyFileList =
-[
-    {
-        input: 'gulpfile.js',
-        output: '../../gulpfile.js'
-    },
-    {
-        input: 'gulp-config.js',
-        output: '../../gulp-config.js'
-    },
-    {
-        input: '.editorconfig',
-        output: '../../.editorconfig'
-    },
-    {
-        input: '.eslintrc.json',
-        output: '../../.eslintrc.json'
-    },
-    {
-        input: '.sass-lint.yml',
-        output: '../../.sass-lint.yml'
-    }
-];
+    [
+        {
+            input: 'postinstall/gulpfile.js',
+            output: '../../gulpfile.js'
+        },
+        {
+            input: 'postinstall/gulp-config.js',
+            output: '../../gulp-config.js'
+        },
+        {
+            input: 'postinstall/.editorconfig',
+            output: '../../.editorconfig'
+        },
+        {
+            input: 'postinstall/.eslintrc.json',
+            output: '../../.eslintrc.json'
+        },
+        {
+            input: 'postinstall/.sass-lint.yml',
+            output: '../../.sass-lint.yml'
+        },
+        {
+            input: 'postinstall/.lesshintrc',
+            output: '../../.lesshintrc'
+        }
+    ];
 
 // Where "src" folder is and have to be place
-var assetsInput = 'src';
+var assetsInput = 'postinstall/src';
 var assetsOutput = '../../src';
 
 function fsExistsSync(myDir) {
@@ -40,7 +44,7 @@ function fsExistsSync(myDir) {
 }
 
 // Copy some unitary files
-for(file of copyyFileList) {
+for(var file of copyyFileList) {
     if (!fsExistsSync(file.output)) {
         fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
     } 

@@ -1,4 +1,3 @@
-const config        = require(__dirname + '/../gulp-config');
 const lazypipe     = require('lazypipe');
 const less          = require('gulp-less');
 const autoprefixer  = require('gulp-autoprefixer');
@@ -7,6 +6,7 @@ const cleanCss = require('gulp-clean-css');
 const gulpif = require('gulp-if');
 const util = require('gulp-util');
 
+const config = util.env.boilerplate.config;
 const lessConfig = config.tasks.less;
 
 module.exports = lazypipe()

@@ -1,51 +1,51 @@
-'use strict';
+'use strict'
 
-var config      = require('../gulp-config');
-var assert = require('assert');
+var config      = require('../gulp-config')
+var assert = require('assert')
 
-var chai = require('chai');
-chai.use(require('chai-fs'));
+var chai = require('chai')
+chai.use(require('chai-fs'))
 
-var expect = chai.expect;
+var expect = chai.expect
 
-var gulp = require('gulp');
+var gulp = require('gulp')
 
-const vs = require('vinyl-string');
-const map = require('map-stream');
+const vs = require('vinyl-string')
+const map = require('map-stream')
 
-const sassPipe = require('../node_modules/adfab-gulp-boilerplate/pipe/sass');
+const sassPipe = require('../node_modules/adfab-gulp-boilerplate/pipe/sass')
 
 var fromString = (input, path, lazypipe) => {
-    return new Promise((res, rej) => {
-        let resultContent = false; // So we can grab the content later
+  return new Promise((res, rej) => {
+    let resultContent = false // So we can grab the content later
 
-        const vFile = vs(input, { path }); // Equivalent to path: path. ES6 Object Literal Shorthand Syntax
+    const vFile = vs(input, { path }) // Equivalent to path: path. ES6 Object Literal Shorthand Syntax
 
-        vFile
+    vFile
         .pipe(lazypipe()) // Call the function we're going to pass in
         .pipe(map((file, cb) => {
-            resultContent = file;
-            cb(null, file);
+          resultContent = file
+          cb(null, file)
         }))
         .on('error', e => {
-            console.log('error :( !!!!!!!!!');
-            rej(e);
+          console.log('error :( !!!!!!!!!')
+          rej(e)
         })
         .on('end', () => {
-            console.log('ended!!!!!!!!!');
-            res(resultContent);
-        });
-    });
+          console.log('ended!!!!!!!!!')
+          res(resultContent)
+        })
+  })
 }
 
-var input = '$foo: red; body { background: $foo; }';
+var input = '$foo: red; body { background: $foo; }'
 fromString(input, 'sass/style.scss', sassPipe).then(output => {
-    console.log('yeah!', output);
-});
+  console.log('yeah!', output)
+})
 
 setTimeout(function() {
-    console.log('wait!')
-}, 5000);
+  console.log('wait!')
+}, 5000)
 
 //
 ////setTimeout(function() {

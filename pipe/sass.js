@@ -1,12 +1,13 @@
-const config       = require(__dirname + '/../gulp-config');
-const lazypipe     = require('lazypipe');
-const sass         = require('gulp-sass');
+const lazypipe = require('lazypipe');
+const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps   = require('gulp-sourcemaps');
+const sourcemaps = require('gulp-sourcemaps');
 const cleanCss = require('gulp-clean-css');
-const gulpif       = require('gulp-if');
-const util         = require('gulp-util'); 
-var sassConfig = config.tasks.sass;
+const gulpif = require('gulp-if');
+const util = require('gulp-util');
+
+const config = util.env.boilerplate.config;
+const sassConfig = config.tasks.sass;
 
 module.exports = lazypipe()
     .pipe(function() {

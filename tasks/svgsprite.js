@@ -1,12 +1,13 @@
 module.exports = function() {
-    const config        = require('../../../gulp-config');
     const gulp          = require('gulp');
-    var svgstore = require('gulp-svgstore');
-    var svgmin = require('gulp-svgmin');
-    var path = require('path');
-    var notify        = require('gulp-notify');
-
-    var svgspriteConfig = config.tasks.svgsprite;
+    const svgstore = require('gulp-svgstore');
+    const svgmin = require('gulp-svgmin');
+    const path = require('path');
+    const notify        = require('gulp-notify');
+    const util = require('gulp-util');
+    
+    const config = util.env.boilerplate.config;
+    const svgspriteConfig = config.tasks.svgsprite;
     
     return gulp.src(svgspriteConfig.source, {cwd: config.sourceRoot})
         .pipe(svgmin(function (file) {
@@ -18,7 +19,7 @@ module.exports = function() {
                         minify: true
                     }
                 }]
-            }
+            };
         }))
         .pipe(svgstore())
         .pipe(gulp.dest(config.destinationRoot + svgspriteConfig.destination))

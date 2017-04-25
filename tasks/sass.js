@@ -1,11 +1,12 @@
 module.exports = function() {
-    const config       = require('../../../gulp-config');
-    const gulp         = require('gulp');
-    const plumber      = require('gulp-plumber');
-    const notify       = require('gulp-notify');
-    const gulpif       = require('gulp-if');
-    const browserSync  = require('browser-sync');
+    const gulp = require('gulp');
+    const plumber = require('gulp-plumber');
+    const notify = require('gulp-notify');
+    const gulpif = require('gulp-if');
+    const browserSync = require('browser-sync');
+    const util = require('gulp-util');
 
+    const config = util.env.boilerplate.config;
     const sassPipe = require('../pipe/sass');
 
     const sassConfig = config.tasks.sass;
@@ -15,8 +16,8 @@ module.exports = function() {
     return gulp.src(sassConfig.source, {cwd: config.sourceRoot})
     .pipe(plumber({
         errorHandler: notify.onError({
-            message: "<%= error.message %>",
-            title: "SASS Error"
+            message: '<%= error.message %>',
+            title: 'SASS Error'
         })
     }))
     .pipe(sassPipe())
@@ -24,6 +25,6 @@ module.exports = function() {
     .pipe(gulpif(isWatching, browserSync.stream({once: true})))
     .pipe(notify({ message: 'Successfully compiled SASS', onLast: true }))
     .on('error', function() {
-        this.emit("error", new Error("SASS compilation Error"));
-      });
+        this.emit('error', new Error('SASS compilation Error'));
+    });
 };
