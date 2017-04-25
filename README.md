@@ -3,6 +3,7 @@
 [![NPM](https://nodei.co/npm/adfab-gulp-boilerplate.png?compact=true)](https://npmjs.org/package/adfab-gulp-boilerplate)
 
 [![npm version](https://badge.fury.io/js/adfab-gulp-boilerplate.svg)](http://badge.fury.io/js/adfab-gulp-boilerplate)
+[![Build Status](https://travis-ci.org/AdFabConnect/adfab-gulp-boilerplate.svg?branch=master)](https://travis-ci.org/AdFabConnect/adfab-gulp-boilerplate)
 [![Dependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate)
 [![devDependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate/dev-status.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate#info=devDependencies)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://raw.githubusercontent.com/AdFabConnect/adfab-gulp-boilerplate/master/LICENSE)

@@ -1,14 +1,40 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
     "env": {
-        "browser": true
+        "es6": true,
+        "node": true
     },
     "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "rules": {
-        "no-console": 1,
-        "semi": 2
+        "indent": [
+            2,
+            4
+        ],
+        "linebreak-style": [
+            2,
+            "unix"
+        ],
+        "quotes": [
+            1,
+            "single"
+        ],
+        "semi": [
+            2,
+            "always"
+        ],
+        "no-console":0,
+        "no-unused-vars":[1],
+        "no-undef":[1],
+        "no-redeclare":[1],
+        "no-unreachable":[1],
+        "no-mixed-spaces-and-tabs":[1],
+        "no-self-assign":[1],
+        "no-cond-assign":[1],
+        "no-case-declarations":[1],
+        "no-dupe-class-members":[1],
+        "no-empty":[1],
+        "valid-typeof":[1]
     }
 }

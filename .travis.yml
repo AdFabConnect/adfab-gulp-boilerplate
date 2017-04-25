@@ -1,0 +1,12 @@
+os:
+  - linux
+  - osx
+  - windows
+language: node_js
+node_js:
+  - "7"
+install:
+  - npm install
+script:
+  - npm run test-unit
+  - npm run lint

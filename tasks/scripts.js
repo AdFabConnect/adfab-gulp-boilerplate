@@ -1,23 +1,20 @@
 module.exports = function() {
-    var config      = require('../../../gulp-config');
-    var gulp = require('gulp');
-    var plumber       = require('gulp-plumber');
-    var notify        = require('gulp-notify');
-    var sourcemaps = require('gulp-sourcemaps');
-    var browserify = require('browserify');
-    var babelify = require('babelify');
-    var concat = require('gulp-concat');
-    var gulpif = require('gulp-if');
-    var util = require('gulp-util');
-    var watchify = require('watchify');
-    var source = require('vinyl-source-stream');
-    var buffer = require('vinyl-buffer');
-    var uglify = require('gulp-uglify');
-    var browserSync = require('browser-sync');
+    const gulp = require('gulp');
+    const notify = require('gulp-notify');
+    const browserify = require('browserify');
+    const babelify = require('babelify'); // eslint-disable-line no-unused-vars
+    const gulpif = require('gulp-if');
+    const watchify = require('watchify');
+    const source = require('vinyl-source-stream');
+    const buffer = require('vinyl-buffer');
+    const uglify = require('gulp-uglify');
+    const browserSync = require('browser-sync');
+    const util = require('gulp-util');
+    
+    const config = util.env.boilerplate.config;
+    const scriptConfig = config.tasks.scripts;
 
-    var scriptConfig = config.tasks.scripts;
-
-    var isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
+    const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
     var handleError = function(task) {
         return function(err) {
@@ -36,7 +33,7 @@ module.exports = function() {
         debug: !util.env.production,
         cache: {},
         packageCache: {},
-    }).transform('babelify', { presets: [scriptConfig.babelPresets] })
+    }).transform('babelify', { presets: [scriptConfig.babelPresets] });
     if(isWatching) {
         bundler = watchify(bundler);
     }
@@ -47,7 +44,7 @@ module.exports = function() {
             .pipe(source(scriptConfig.destinationFile))
             .pipe(buffer())
             .pipe(gulpif(util.env.production, uglify().on('error', function(err) {
-                util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err))
+                util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err));
             })))
             .pipe(gulp.dest(config.destinationRoot + scriptConfig.destination))
             .pipe(gulpif(isWatching, browserSync.stream({once: true})))
