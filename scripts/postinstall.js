@@ -4,14 +4,14 @@ var prependFile = require('prepend-file');
 var pkg = require('../package.json');
 
 var headerContent = ['/**',
-  ' * This file is generated. Please don\'t update it',
-  ' * ' + pkg.name + ' - ' + pkg.description,
-  ' * @version v' + pkg.version,
-  ' * @link ' + pkg.homepage,
-  ' * @license ' + pkg.license,
-  ' */',
-  '',
-  ''].join('\n');
+    ' * This file is generated. Please don\'t update it',
+    ' * ' + pkg.name + ' - ' + pkg.description,
+    ' * @version v' + pkg.version,
+    ' * @link ' + pkg.homepage,
+    ' * @license ' + pkg.license,
+    ' */',
+    '',
+    ''].join('\n');
 
 //Where "src" folder is and have to be place
 var copyyFileList =
