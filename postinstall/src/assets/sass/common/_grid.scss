@@ -1,7 +1,7 @@
 .grid {
     margin-left: $content-offset;
     margin-right: $content-offset;
-    width: ~"calc(100% - 30px)";
+    width: calc(100% - 30px);
     max-width: 1160px;
     margin: 0 auto;
 }

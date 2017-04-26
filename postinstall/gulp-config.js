@@ -86,7 +86,7 @@ module.exports = {
         // Copy templates files. Minify html during process
         views: {
             source: [ 'views/**/*.html', 'views/**/*.php' ], // The files you are compiling
-            destination: './public',  // Name of the folder where put view files
+            destination: 'views',  // Name of the folder where put view files
             minifyHTML: true // If HTML in destination file has to be minified. Don't work with PHP code
         },
 
