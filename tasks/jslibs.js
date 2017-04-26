@@ -1,5 +1,6 @@
 module.exports = function() {
     const gulp          = require('gulp');
+    const notify = require('gulp-notify');
     const concat = require('gulp-concat');
     const util = require('gulp-util');
 
@@ -8,5 +9,6 @@ module.exports = function() {
 
     return gulp.src(jslibsConfig.source, {cwd: config.sourceRoot})
         .pipe(concat(jslibsConfig.destinationFile))
-        .pipe(gulp.dest(config.destinationRoot + jslibsConfig.destination));
+        .pipe(gulp.dest(config.destinationRoot + jslibsConfig.destination))
+        .pipe(notify('Successfully compiled JS libs'));
 };

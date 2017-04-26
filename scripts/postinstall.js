@@ -1,12 +1,26 @@
 var fs = require('fs');
 var ncp = require('ncp').ncp;
+var prependFile = require('prepend-file');
+var pkg = require('../package.json');
+
+var headerContent = ['/**',
+  ' * This file is generated. Please don\'t update it',
+  ' * ' + pkg.name + ' - ' + pkg.description,
+  ' * @version v' + pkg.version,
+  ' * @link ' + pkg.homepage,
+  ' * @license ' + pkg.license,
+  ' */',
+  '',
+  ''].join('\n');
 
 //Where "src" folder is and have to be place
 var copyyFileList =
     [
         {
             input: 'postinstall/gulpfile.js',
-            output: '../../gulpfile.js'
+            output: '../../gulpfile.js',
+            force: true,
+            prepend: headerContent
         },
         {
             input: 'postinstall/gulp-config.js',
@@ -45,8 +59,11 @@ function fsExistsSync(myDir) {
 
 // Copy some unitary files
 for(var file of copyyFileList) {
-    if (!fsExistsSync(file.output)) {
+    if (file.force || !fsExistsSync(file.output)) {
         fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
+        if(file.prepend) {
+            prependFile(file.output, file.prepend);
+        }
     } 
 }
 

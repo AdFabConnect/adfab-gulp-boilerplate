@@ -24,7 +24,10 @@ for(var taskName in config.tasks) {
         if(config.tasks[taskName].hasOwnProperty('watch')) {
             watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watch });
         } else if(config.tasks[taskName].hasOwnProperty('source')) {
-            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].source });
+            // 'scripts' task is bundled with babel, watch is managed in 'scripts' task
+            if(taskName !== 'scripts') {
+                watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].source });
+            }
         }
     }
 }
