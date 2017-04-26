@@ -62,7 +62,7 @@ for(var file of copyyFileList) {
     if (file.force || !fsExistsSync(file.output)) {
         fs.createReadStream(file.input).pipe(fs.createWriteStream(file.output));
         if(file.prepend) {
-            prependFile(file.output, headerContent);
+            prependFile(file.output, file.prepend);
         }
     } 
 }
