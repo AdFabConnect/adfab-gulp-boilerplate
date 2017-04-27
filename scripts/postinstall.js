@@ -23,8 +23,8 @@ var copyyFileList =
             prepend: headerContent
         },
         {
-            input: 'postinstall/gulp-config.js',
-            output: '../../gulp-config.js'
+            input: 'postinstall/gulp-config.json',
+            output: '../../gulp-config.json'
         },
         {
             input: 'postinstall/.editorconfig',
