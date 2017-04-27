@@ -1,4 +1,4 @@
-const config      = require('./gulp-config');
+const config      = require('./gulp-config.json');
 const runSequence = require('run-sequence');
 const gulp        = require('gulp');
 const del         = require('del');

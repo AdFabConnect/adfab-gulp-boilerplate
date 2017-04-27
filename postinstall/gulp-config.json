@@ -1,0 +1,85 @@
+{
+    "vhost": "gulp-boilerplate.local",
+    "sourceRoot": "./src/assets/",
+    "destinationRoot": "./public/",
+    "tasks": {
+        "fonticon": {
+            "source": ["icons/*.svg"],
+            "destination": "fonts/",
+            "fileType": "scss",
+            "fileName": "./../../../../src/assets/sass/common/_fonticon.scss",
+            "fontName": "fonticon",
+            "fontPath": "fonts/",
+            "format": ["ttf", "eot", "woff", "woff2", "svg"]
+        },
+        "sass": {
+            "source": ["sass/**/*.scss"],
+            "destination": "css/",
+            "browsers": ["last 2 versions"],
+            "config": {
+                "includePaths": []
+            }
+        },
+        "sasslint": {
+            "source": ["sass/**/*.scss"],
+            "ignore": []
+        },
+        "less": {
+            "source": ["less/style-less.less"],
+            "watch": ["less/**/*.less"],
+            "destination": "css",
+            "browsers": ["last 2 versions"]
+        },
+        "lesshint": {
+            "source": ["less/**/*.less"]
+        },
+        "postcss": {
+            "source": ["pcss/**/*.pcss"],
+            "destination": "css",
+            "destinationFile": "app.css",
+            "config": {
+                "bem": {
+                    "style": "bem"
+                },
+                "next": {
+                    "browsers": "last 5 versions, ie >= 9"
+                }
+            }
+        },
+        "jslibs": {
+            "source": ["libs/**/*.js"],
+            "destination": "scripts",
+            "destinationFile": "lib.js"
+        },
+        "scripts": {
+            "source": ["scripts/app.js"],
+            "destination": "scripts",
+            "destinationFile": "app.js",
+            "babelPresets": "es2015"
+        },
+        "eslint": {
+            "source": ["scripts/**/*.js"],
+            "config": {
+                "globals": []
+            }
+        },
+        "views": {
+            "source": ["views/**/*.html", "views/**/*.php"],
+            "destination": "views",
+            "minifyHTML": true
+        },
+        "images": {
+            "source": ["images/**/*"],
+            "destination": "images",
+            "minify": true
+        },
+        "fonts": {
+            "source": ["fonts/**/*"],
+            "destination": "fonts"
+        },
+        "svgsprite": {
+            "source": ["svg/*.svg"],
+            "destination": "images"
+        }
+    }
+}
