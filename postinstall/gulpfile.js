@@ -17,16 +17,17 @@ util.env.boilerplate = {
 for(var taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
         gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
+        var task = config.tasks[taskName];
         taskList.push(taskName);
-        if(config.tasks[taskName].hasOwnProperty('destination')) {
+        if(task.hasOwnProperty('destination') && (!task.hasOwnProperty('clean') || task.clean)) {
             cleanFolderList.push(config.tasks[taskName].destination);
         }
-        if(config.tasks[taskName].hasOwnProperty('watch')) {
-            watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].watch });
-        } else if(config.tasks[taskName].hasOwnProperty('source')) {
+        if(task.hasOwnProperty('watch')) {
+            watchTaskList.push({'task': taskName, 'fileList': task.watch });
+        } else if(task.hasOwnProperty('source')) {
             // 'scripts' task is bundled with babel, watch is managed in 'scripts' task
             if(taskName !== 'scripts') {
-                watchTaskList.push({'task': taskName, 'fileList': config.tasks[taskName].source });
+                watchTaskList.push({'task': taskName, 'fileList': task.source });
             }
         }
     }
