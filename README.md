@@ -62,6 +62,20 @@ Here is a list of current taks available:
 * fonts: juste copy your font files
 * svgsprite: create a svg sprite from all svg in a folder
 
+### Tasks options
+
+For every task you can add an option 'clean' to disable clean task for task destination folder before build:
+
+```json
+{
+    "taskName": {
+        "clean": false
+    }
+}
+```
+
+It can be useful if your destination folder already contains other files you want to keep, but your deleted files won't be removed anymore from destination.
+
 ### Browser live reloads
 
 Start [Browsersync](https://www.browsersync.io/):
