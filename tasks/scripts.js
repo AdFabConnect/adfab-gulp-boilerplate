@@ -13,7 +13,7 @@ module.exports = function() {
 
     const config = util.env.boilerplate.config;
     const scriptConfig = config.tasks.scripts;
-    const vendors = config.tasks.jslibs.source;
+    const vendors = config.tasks.jslibs ? config.tasks.jslibs.source : [];
 
     const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
