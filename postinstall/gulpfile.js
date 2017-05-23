@@ -5,6 +5,7 @@ const del         = require('del');
 const browserSync = require('browser-sync');
 const watch       = require('gulp-watch');
 const util = require('gulp-util');
+var fs = require('fs');
 
 var cleanFolderList = [];
 var taskList = [];
@@ -16,7 +17,11 @@ util.env.boilerplate = {
 
 for(var taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
-        gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
+        if(fs.existsSync('./gulp-tasks/' + taskName + '.js')) {
+            gulp.task(taskName, require('./gulp-tasks/' + taskName));
+        } else {
+            gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
+        }
         var task = config.tasks[taskName];
         taskList.push(taskName);
         if(task.hasOwnProperty('destination') && (!task.hasOwnProperty('clean') || task.clean)) {
