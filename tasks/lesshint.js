@@ -14,6 +14,5 @@ module.exports = function() {
             title: 'Less hint Error'
         })}))
         .pipe(lesshint())
-        .pipe(lesshint.reporter())
-        .pipe(notify({message: 'Successfully hint Less', onLast: true }));
+        .pipe(lesshint.reporter());
 };

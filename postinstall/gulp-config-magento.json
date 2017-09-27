@@ -1,0 +1,38 @@
+{
+    "destinationRoot": "/",
+    "tasks": {
+        "fonticon": {
+            "destination": "fonts/",
+            "fileType": "scss",
+            "fileName": "./../../../../src/assets/sass/common/_fonticon.scss"
+        },
+        "sass": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/css/"
+        },
+        "less": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/css/"
+        },
+        "postcss": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/css/"
+        },
+        "jslibs": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/js/"
+        },
+        "scripts": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/js",
+            "destinationFile": "app.js"
+        },
+        "views": {
+            "destination": "app/design/frontend/{{packageName}}/{{themeName}}/template/"
+        },
+        "images": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/images/"
+        },
+        "fonts": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/fonts/"
+        },
+        "svgsprite": {
+            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/images/"
+        }
+    }
+}

@@ -10,6 +10,5 @@ module.exports = function() {
     return gulp
         .src(eslintConfig.source, {cwd: config.sourceRoot })
         .pipe(eslint(eslintConfig.config || {}))
-        .pipe(eslint.format())
-        .pipe(notify({message: 'Successfully lint JS', onLast: true }));
+        .pipe(eslint.format());
 };

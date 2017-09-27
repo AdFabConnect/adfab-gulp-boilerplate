@@ -62,6 +62,11 @@ Here is a list of current taks available:
 * fonts: juste copy your font files
 * svgsprite: create a svg sprite from all svg in a folder
 
+### Add custom task / Override task
+
+You can create a folder named 'gulp-tasks' at the root of your project.
+In this folder you can add new tasks. If a task has the same name as a default boilerplate task, it will override it.
+
 ### Tasks options
 
 For every task you can add an option 'clean' to disable clean task for task destination folder before build:

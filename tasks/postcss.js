@@ -35,7 +35,7 @@ module.exports = function() {
         .pipe(postcss(processors))
         .pipe(concat(postcssConfig.destinationFile))
         .pipe(gulpif(util.env.production, cleanCss()))
-        .pipe(gulpif(!util.env.prodction, sourcemaps.write()))
+        .pipe(gulpif(!util.env.production, sourcemaps.write()))
         .pipe(gulp.dest(config.destinationRoot + postcssConfig.destination))
         .pipe(browserSync.stream())
         .pipe(notify('Successfully compiled postCSS'))

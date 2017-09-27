@@ -19,6 +19,5 @@ module.exports = function() {
             title: 'Sass lint Error'
         })}))
         .pipe(sassLint(options))
-        .pipe(sassLint.format())
-        .pipe(notify({message: 'Successfully lint Sass', onLast: true }));
+        .pipe(sassLint.format());
 };

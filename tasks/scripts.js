@@ -10,10 +10,9 @@ module.exports = function() {
     const uglify = require('gulp-uglify');
     const browserSync = require('browser-sync');
     const util = require('gulp-util');
-
+    
     const config = util.env.boilerplate.config;
     const scriptConfig = config.tasks.scripts;
-    const vendors = config.tasks.hasOwnProperty('jslibs') ? config.tasks.jslibs.source : [];
 
     const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
@@ -34,10 +33,7 @@ module.exports = function() {
         debug: !util.env.production,
         cache: {},
         packageCache: {},
-    })
-    .external(vendors)
-    .transform('babelify', { presets: [scriptConfig.babelPresets] });
-
+    }).transform('babelify', { presets: [scriptConfig.babelPresets] });
     if(isWatching) {
         bundler = watchify(bundler);
     }
@@ -57,6 +53,6 @@ module.exports = function() {
     if(isWatching) {
         bundler.on('update', bundle);
     }
-
+    
     return bundle();
 };

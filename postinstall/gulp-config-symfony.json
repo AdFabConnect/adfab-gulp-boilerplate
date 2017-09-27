@@ -1,0 +1,38 @@
+{
+    "destinationRoot": "/web",
+    "tasks": {
+        "fonticon": {
+            "destination": "fonts/",
+            "fileType": "scss",
+            "fileName": "./../../../../src/assets/sass/common/_fonticon.scss"
+        },
+        "sass": {
+            "destination": "styles/"
+        },
+        "less": {
+            "destination": "styles/"
+        },
+        "postcss": {
+            "destination": "styles/"
+        },
+        "jslibs": {
+            "destination": "scripts/"
+        },
+        "scripts": {
+            "destination": "scripts/",
+            "destinationFile": "app.js"
+        },
+        "views": {
+            "destination": "views/"
+        },
+        "images": {
+            "destination": "images"
+        },
+        "fonts": {
+            "destination": "fonts"
+        },
+        "svgsprite": {
+            "destination": "images"
+        }
+    }
+}

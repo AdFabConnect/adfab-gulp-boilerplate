@@ -3,8 +3,19 @@ const util = require('gulp-util');
 
 const config = util.env.boilerplate.config;
 
-module.exports = function() {
-    return browserSync.init({
+var browserSyncConfig;
+if(config.hasOwnProperty('vhost')) {
+    browserSyncConfig = {
         proxy: config.vhost
-    });
+    }
+} else {
+    browserSyncConfig = {
+        server: {
+            baseDir: config.destinationRoot
+        }
+    }
+}
+
+module.exports = function() {
+    return browserSync.init(browserSyncConfig);
 };
