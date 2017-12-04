@@ -8,8 +8,8 @@ module.exports = function() {
     
     const config = util.env.boilerplate.config;
     const fonticonConfig = config.tasks.fonticon;
-    
-    return gulp.src(fonticonConfig.source, {cwd: config.sourceRoot})
+
+    return gulp.src(fonticonConfig.source, {cwd: config.sourceRoot, base: './'})
       .pipe(plumber({errorHandler: notify.onError({
           message: '<%= error.message %>',
           title: 'Views Error'
