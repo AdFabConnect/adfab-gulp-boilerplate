@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp = require('gulp');
     const plumber = require('gulp-plumber');
     const notify = require('gulp-notify');
@@ -8,7 +8,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const lessConfig = config.tasks.less;
+    const lessConfig = config.tasks[configName];
 
     const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
 
@@ -22,5 +22,5 @@ module.exports = function() {
         .pipe(lessPipe())
         .pipe(gulp.dest(config.destinationRoot + lessConfig.destination))
         .pipe(gulpif(isWatching, browserSync.stream({once: true})))
-        .pipe(notify('Successfully compiled Less'));
+        .pipe(notify('Successfully compiled Less ' + configName));
 };

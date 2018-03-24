@@ -17,12 +17,19 @@ util.env.boilerplate = {
 
 for(var taskName in config.tasks) {
     if (config.tasks.hasOwnProperty(taskName)) {
-        if(fs.existsSync('./gulp-tasks/' + taskName + '.js')) {
-            gulp.task(taskName, require('./gulp-tasks/' + taskName));
-        } else {
-            gulp.task(taskName, require('./node_modules/adfab-gulp-boilerplate/tasks/' + taskName));
-        }
         var task = config.tasks[taskName];
+        var relatedTask = task.hasOwnProperty('task') ? task.task : taskName;
+        if(fs.existsSync('./gulp-tasks/' + relatedTask + '.js')) {
+            gulp.task(taskName, require('./gulp-tasks/' + relatedTask));
+        } else {
+            gulp.task(taskName, function(taskName, relatedTask) {
+                var taskExport = require('./node_modules/adfab-gulp-boilerplate/tasks/' + relatedTask);
+                return function() {
+                    taskExport(taskName);
+                }
+            }(taskName, relatedTask));
+        }
+
         taskList.push(taskName);
         if(task.hasOwnProperty('destination') && (!task.hasOwnProperty('clean') || task.clean)) {
             cleanFolderList.push(config.tasks[taskName].destination);
