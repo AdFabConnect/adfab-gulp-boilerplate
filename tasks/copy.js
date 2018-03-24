@@ -8,5 +8,5 @@ module.exports = function(configName) {
 
     return gulp.src(fontsConfig.source, {cwd: config.sourceRoot})
         .pipe(gulp.dest(config.destinationRoot + fontsConfig.destination))
-        .pipe(notify('Successfully copy ' + configName));;
+        .pipe(notify({message: 'Successfully copy ' + configName, onLast: true }));
 };

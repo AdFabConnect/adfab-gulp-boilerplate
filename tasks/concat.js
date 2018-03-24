@@ -1,5 +1,4 @@
 module.exports = function(configName) {
-    console.log(configName);
     const gulp          = require('gulp');
     const notify = require('gulp-notify');
     const concat = require('gulp-concat');
@@ -11,5 +10,5 @@ module.exports = function(configName) {
     return gulp.src(jslibsConfig.source, {cwd: config.sourceRoot})
         .pipe(concat(jslibsConfig.destinationFile))
         .pipe(gulp.dest(config.destinationRoot + jslibsConfig.destination))
-        .pipe(notify('Successfully concat ' + configName));
+        .pipe(notify({message: 'Successfully concat ' + configName, onLast: true }));
 };
