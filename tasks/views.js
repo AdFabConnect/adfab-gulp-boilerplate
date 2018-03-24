@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp    = require('gulp');
     const plumber = require('gulp-plumber');
     const notify  = require('gulp-notify');
@@ -8,7 +8,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const viewsConfig = config.tasks.views;
+    const viewsConfig = config.tasks[configName];
 
     const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
 

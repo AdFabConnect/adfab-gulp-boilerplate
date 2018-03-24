@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp = require('gulp');
     const notify = require('gulp-notify');
     const browserify = require('browserify');
@@ -12,7 +12,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const scriptConfig = config.tasks.scripts;
+    const scriptConfig = config.tasks[configName];
 
     const isWatching = ['serve', 'watch'].indexOf(process.argv[2]) >= 0;
     // Error notifications
@@ -48,7 +48,7 @@ module.exports = function() {
             })))
             .pipe(gulp.dest(config.destinationRoot + scriptConfig.destination))
             .pipe(gulpif(isWatching, browserSync.stream({once: true})))
-            .pipe(notify({message: 'Successfully compiled JS', onLast: true}));
+            .pipe(notify({message: 'Successfully compiled scripts for task ' + configName, onLast: true}));
     };
     if(isWatching) {
         bundler.on('update', bundle);

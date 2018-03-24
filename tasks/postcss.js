@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp = require('gulp');
     const plumber = require('gulp-plumber');
     const notify = require('gulp-notify');
@@ -15,7 +15,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const postcssConfig = config.tasks.postcss; 
+    const postcssConfig = config.tasks[configName]; 
 
     var processors = [
         Import,

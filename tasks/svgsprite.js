@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp          = require('gulp');
     const svgstore = require('gulp-svgstore');
     const svgmin = require('gulp-svgmin');
@@ -7,7 +7,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const svgspriteConfig = config.tasks.svgsprite;
+    const svgspriteConfig = config.tasks[configName];
     
     return gulp.src(svgspriteConfig.source, {cwd: config.sourceRoot})
         .pipe(svgmin(function (file) {

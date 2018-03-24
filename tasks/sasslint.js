@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp = require('gulp');
     const plumber = require('gulp-plumber');
     const notify = require('gulp-notify');
@@ -6,7 +6,7 @@ module.exports = function() {
     const util = require('gulp-util');
     
     const config = util.env.boilerplate.config;
-    const sasslintConfig = config.tasks.sasslint;
+    const sasslintConfig = config.tasks[configName];
 
     var options = {};
     if(sasslintConfig.ignore) {

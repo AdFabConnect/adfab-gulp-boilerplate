@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(configName) {
     const gulp = require('gulp');
     const plumber = require('gulp-plumber');
     const notify = require('gulp-notify');
@@ -6,7 +6,7 @@ module.exports = function() {
     const util = require('gulp-util');
 
     const config = util.env.boilerplate.config;
-    const lesshintConfig = config.tasks.lesshint;
+    const lesshintConfig = config.tasks[configName];
 
     return gulp.src(lesshintConfig.source, {cwd: config.sourceRoot })
         .pipe(plumber({errorHandler: notify.onError({
