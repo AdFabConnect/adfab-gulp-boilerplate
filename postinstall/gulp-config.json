@@ -55,7 +55,7 @@
             "source": ["scripts/app.js"],
             "destination": "scripts",
             "destinationFile": "app.js",
-            "babelPresets": "es2015"
+            "babelPresets": "env"
         },
         "eslint": {
             "source": ["scripts/**/*.js"],
