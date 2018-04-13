@@ -5,7 +5,7 @@ module.exports = function() {
     const iconfont = require('gulp-iconfont');
     const iconfontCss = require('gulp-iconfont-css');
     const util = require('gulp-util');
-    
+
     const config = util.env.boilerplate.config;
     const fonticonConfig = config.tasks.fonticon;
 
@@ -24,7 +24,7 @@ module.exports = function() {
           fontName: fonticonConfig.fontName,
           formats: fonticonConfig.format
       }))
-      .pipe(gulp.dest(config.destinationRoot + fonticonConfig.destination))
+      .pipe(gulp.dest(config.sourceRoot + fonticonConfig.destination))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
       .on('error', function() {
           this.emit('error', new Error('SVG font icon compilation Error'));
