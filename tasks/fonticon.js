@@ -23,6 +23,7 @@ module.exports = function() {
       .pipe(iconfont({
           fontName: fonticonConfig.fontName,
           formats: fonticonConfig.format
+          timestamp: fonticonConfig.timestamp
       }))
       .pipe(gulp.dest(config.sourceRoot + fonticonConfig.destination))
       .pipe(notify({message: 'Successfully compiled SVG font icon', onLast: true}))
