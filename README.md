@@ -154,7 +154,7 @@ Using:
 gulp serve
 ```
 
-will start a [Browsersync](https://www.browsersync.io/) server.
+It start a [Browsersync](https://www.browsersync.io/) server.
 
 It acts as a proxy to the domain you specified in `gulp-config.json` (property `vhost`). You can now access your project by specifying the `3000` port (if you usually access your project via `http://project.localhost/`, now it would be `http://project.localhost:3000/`).
 
