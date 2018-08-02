@@ -10,7 +10,8 @@
             "fileName": "./../../../../src/assets/sass/common/_fonticon.scss",
             "fontName": "fonticon",
             "fontPath": "fonts/",
-            "format": ["ttf", "eot", "woff", "woff2", "svg"]
+            "format": ["ttf", "eot", "woff", "woff2", "svg"],
+            "runafter": ["sass", "fonts"]
         },
         "sass": {
             "source": ["sass/**/*.scss"],
@@ -47,6 +48,7 @@
             }
         },
         "jslibs": {
+            "task": "concat",
             "source": ["libs/**/*.js"],
             "destination": "scripts",
             "destinationFile": "lib.js"
@@ -74,6 +76,7 @@
             "minify": true
         },
         "fonts": {
+            "task": "copy",
             "source": ["fonts/**/*"],
             "destination": "fonts"
         },
