@@ -10,6 +10,7 @@ module.exports = function(configName) {
     const uglify = require('gulp-uglify');
     const browserSync = require('browser-sync');
     const util = require('gulp-util');
+    const runSequence = require('run-sequence');
     
     const config = util.env.boilerplate.config;
     const scriptConfig = config.tasks[configName];

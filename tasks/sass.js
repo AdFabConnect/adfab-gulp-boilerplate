@@ -5,6 +5,7 @@ module.exports = function(configName) {
     const gulpif = require('gulp-if');
     const browserSync = require('browser-sync');
     const util = require('gulp-util');
+    const runSequence = require('run-sequence');
 
     const config = util.env.boilerplate.config;
     const sassPipe = require('../pipe/sass');
