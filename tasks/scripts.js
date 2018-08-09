@@ -47,6 +47,11 @@ module.exports = function(configName) {
                 util.log(util.colors.bgRed('UglifyJS error:'), util.colors.red(err));
             })))
             .pipe(gulp.dest(config.destinationRoot + scriptConfig.destination))
+            .on('end', function() {
+                if(scriptConfig.hasOwnProperty('runafter')) {
+                    runSequence(scriptConfig.runafter);
+                }
+            })
             .pipe(gulpif(isWatching, browserSync.stream({once: true})))
             .pipe(notify({message: 'Successfully compiled scripts for task ' + configName, onLast: true}));
     };

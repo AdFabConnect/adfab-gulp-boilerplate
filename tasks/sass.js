@@ -21,8 +21,13 @@ module.exports = function(configName) {
     }))
     .pipe(sassPipe())
     .pipe(gulp.dest(config.destinationRoot + sassConfig.destination))
+    .on('end', function() {
+        if(sassConfig.hasOwnProperty('runafter')) {
+            runSequence(sassConfig.runafter);
+        }
+    })
     .pipe(gulpif(isWatching, browserSync.stream()))
-    .pipe(notify({ message: 'Successfully compiled SASS' + configName, onLast: true }))
+    .pipe(notify({ message: 'Successfully compiled SASS for task ' + configName, onLast: true }))
     .on('error', function() {
         this.emit('error', new Error(configName + ' compilation Error'));
     });
