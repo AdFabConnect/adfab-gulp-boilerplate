@@ -8,7 +8,7 @@ const util = require('gulp-util');
 var fs = require('fs');
 
 var cleanFolderList = [];
-var taskList = [];
+var buildTaskList = [];
 var watchTaskList = [];
 
 util.env.boilerplate = {
@@ -30,7 +30,9 @@ for(var taskName in config.tasks) {
             }(taskName, relatedTask));
         }
 
-        taskList.push(taskName);
+        if(!task.hasOwnProperty('build') || task.build) {
+            buildTaskList.push(taskName);
+        }
         if(task.hasOwnProperty('destination') && (!task.hasOwnProperty('clean') || task.clean)) {
             cleanFolderList.push(config.tasks[taskName].destination);
         }
@@ -56,7 +58,7 @@ gulp.task('clean', function() {
  * Build app from sources
  */
 gulp.task('build', ['clean'], function() {
-    return runSequence(taskList);
+    return runSequence(buildTaskList);
 });
 
 //BrowserSync
