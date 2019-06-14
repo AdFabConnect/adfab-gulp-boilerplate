@@ -174,4 +174,6 @@ It will remove sourcemap genreration and minify your js and css.
 
 ## License
 
-ISC - Copyright (c) 2016-2018 ADFAB
+[ISC license](https://github.com/AdFabConnect/adfab-gulp-boilerplate/blob/master/LICENSE).
+
+Copyright (c) 2016-2018 ADFAB
