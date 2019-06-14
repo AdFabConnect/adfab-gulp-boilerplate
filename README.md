@@ -1,14 +1,14 @@
-# AdFab Gulp Boilerplate
+# ADFAB Gulp Boilerplate
 
-> The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel
-
-[![NPM](https://nodei.co/npm/adfab-gulp-boilerplate.png?compact=true)](https://npmjs.org/package/adfab-gulp-boilerplate)
+> The goal of this [Gulp](http://gulpjs.com/) boilerplate is to free you time so you can do something more interesting than reinventing the wheel.
 
 [![npm version](https://badge.fury.io/js/adfab-gulp-boilerplate.svg)](http://badge.fury.io/js/adfab-gulp-boilerplate)
 [![Build Status](https://travis-ci.org/AdFabConnect/adfab-gulp-boilerplate.svg?branch=master)](https://travis-ci.org/AdFabConnect/adfab-gulp-boilerplate)
 [![Dependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate)
 [![devDependency Status](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate/dev-status.svg?theme=shields.io)](https://david-dm.org/AdFabConnect/adfab-gulp-boilerplate#info=devDependencies)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://raw.githubusercontent.com/AdFabConnect/adfab-gulp-boilerplate/master/LICENSE)
+
+## Features
 
 * Automatic reloading of the browser on code modification (using [Browsersync](https://www.browsersync.io/))
 * CSS / JS Sourcemaps
@@ -174,4 +174,4 @@ It will remove sourcemap genreration and minify your js and css.
 
 ## License
 
-ISC - Copyright (c) 2016-2018 AdFab Team
+ISC - Copyright (c) 2016-2018 ADFAB
