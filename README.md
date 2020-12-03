@@ -98,7 +98,6 @@ Here is a list of current taks available:
 * `less`: as sass, but for less
 * `sasslint`: checks your sass code
 * `lesshint`: checks your less code
-* `postcss`: the same, but for postcss
 * `fonticon`: [fonticon](https://www.npmjs.com/package/gulp-iconfont) takes all svg files in a folder to create a fonticon and a [css/less/sass](https://www.npmjs.com/package/gulp-iconfont-css) file to be included in your final css
 * `jslibs`: concatenates and uglify all your js libs into one single file
 * `scripts`: parse your js with babelify for es6 compatibility. adds sourcemaps for dev, uglify for production
