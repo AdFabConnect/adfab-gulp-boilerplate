@@ -12,9 +12,6 @@
         "less": {
             "destination": "css/"
         },
-        "postcss": {
-            "destination": "css/"
-        },
         "jslibs": {
             "destination": "scripts/"
         },

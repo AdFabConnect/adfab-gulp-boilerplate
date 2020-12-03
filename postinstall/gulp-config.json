@@ -34,19 +34,6 @@
         "lesshint": {
             "source": ["less/**/*.less"]
         },
-        "postcss": {
-            "source": ["pcss/**/*.pcss"],
-            "destination": "css",
-            "destinationFile": "app.css",
-            "config": {
-                "bem": {
-                    "style": "bem"
-                },
-                "next": {
-                    "browsers": "last 5 versions, ie >= 9"
-                }
-            }
-        },
         "jslibs": {
             "task": "concat",
             "source": ["libs/**/*.js"],

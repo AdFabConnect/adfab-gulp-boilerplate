@@ -18,7 +18,6 @@ class PostInstall {
         this.preprocessorList = {
             'less': {},
             'sass': {},
-            'postcss': {},
             'none': {}
         }
 
@@ -256,11 +255,8 @@ class PostInstall {
                 delete finalConfig.tasks[task];
             }
         }
-        
-        if (this.userData.preprocessor === 'postcss') {
-        } else {
-            delete finalConfig.tasks.postcss;
-        }
+
+        delete finalConfig.tasks.postcss;
     }
 
     copyFiles() {

@@ -12,9 +12,6 @@
         "less": {
             "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/css/"
         },
-        "postcss": {
-            "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/css/"
-        },
         "jslibs": {
             "destination": "skin/frontend/css/{{packageName}}/{{themeName}}/js/"
         },
